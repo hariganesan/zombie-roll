@@ -7,6 +7,7 @@ CFLAGS=-pedantic -Wall -I/sw/include -L/sw/lib
 SDL=-lSDLmain -lSDL -lSDL_ttf -lSDL_mixer
 COCOA=-framework Cocoa
 GL=-framework OpenGL -L/sw/lib
+SRC=src
 
 all: zombie clean
 
@@ -14,7 +15,7 @@ all: zombie clean
 zombie: zombie.o
 	$(CC) -o $@ $(COCOA) $(GL) $(SDL) $^
 
-zombie.o: zombie.cpp
+zombie.o: $(SRC)/*.cpp
 	$(CC) $(CFLAGS) -c $^
 
 clean:

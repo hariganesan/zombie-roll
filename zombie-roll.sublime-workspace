@@ -7,6 +7,24 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "zombie.cpp",
+			"settings":
+			{
+				"buffer_size": 3020,
+				"line_ending": "Unix",
+				"name": "// Hari Ganesan 2/4/13"
+			}
+		},
+		{
+			"file": "Makefile",
+			"settings":
+			{
+				"buffer_size": 370,
+				"line_ending": "Unix",
+				"name": "# Hari Ganesan 2/4/13"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -79,6 +97,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"main",
 			"count",
 			"200",
 			"150",
@@ -215,8 +234,63 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "zombie.cpp",
+					"settings":
+					{
+						"buffer_size": 3020,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3019,
+								3019
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// Hari Ganesan 2/4/13",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1602.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Makefile",
+					"settings":
+					{
+						"buffer_size": 370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								270,
+								270
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# Hari Ganesan 2/4/13",
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
