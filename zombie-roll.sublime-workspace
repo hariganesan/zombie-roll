@@ -8,21 +8,37 @@
 	"buffers":
 	[
 		{
-			"file": "zombie.cpp",
-			"settings":
-			{
-				"buffer_size": 3020,
-				"line_ending": "Unix",
-				"name": "// Hari Ganesan 2/4/13"
-			}
-		},
-		{
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 370,
+				"buffer_size": 380,
 				"line_ending": "Unix",
 				"name": "# Hari Ganesan 2/4/13"
+			}
+		},
+		{
+			"file": "src/zombie.cpp",
+			"settings":
+			{
+				"buffer_size": 3512,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Actor.h",
+			"settings":
+			{
+				"buffer_size": 1251,
+				"line_ending": "Unix",
+				"name": "// Hari Ganesan 3/10/13"
+			}
+		},
+		{
+			"file": "src/Actor.cpp",
+			"settings":
+			{
+				"buffer_size": 112,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -54,6 +70,8 @@
 	},
 	"file_history":
 	[
+		"/Users/Hari/scm/zombie-roll/src/Actor.cpp",
+		"/Users/Hari/scm/zombie-roll/zombie.cpp",
 		"/sw/include/sasl/prop.h",
 		"/Users/Hari/scm/yale-tetris/tetris.cpp",
 		"/Users/Hari/scm/yale-tetris/Makefile",
@@ -97,6 +115,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			")",
+			"W_",
+			"W",
 			"main",
 			"count",
 			"200",
@@ -239,51 +260,105 @@
 			[
 				{
 					"buffer": 0,
-					"file": "zombie.cpp",
-					"settings":
-					{
-						"buffer_size": 3020,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3019,
-								3019
-							]
-						],
-						"settings":
-						{
-							"auto_name": "// Hari Ganesan 2/4/13",
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1602.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "Makefile",
 					"settings":
 					{
-						"buffer_size": 370,
+						"buffer_size": 380,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								270,
-								270
+								245,
+								245
 							]
 						],
 						"settings":
 						{
 							"auto_name": "# Hari Ganesan 2/4/13",
 							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/zombie.cpp",
+					"settings":
+					{
+						"buffer_size": 3512,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								523,
+								523
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1402.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Actor.h",
+					"settings":
+					{
+						"buffer_size": 1251,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1000,
+								1000
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// Hari Ganesan 3/10/13",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 854.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/Actor.cpp",
+					"settings":
+					{
+						"buffer_size": 112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								112,
+								112
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

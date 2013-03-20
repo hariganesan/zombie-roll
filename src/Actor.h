@@ -85,6 +85,16 @@ class FightingCharacter : public Character {
 
 	Weapon equippedWeapon;
 	Armor equippedArmor[2];
+
+	FightingCharacter(int l, int a, int d, int m, int s, int h, int n) : exp(0) {
+		level = l;
+		attack = a;
+		defense = d;
+		magic = m;
+		speed = s;
+		totalHP = h;
+		totalMP = n;
+	}
 };
 
 class PartyMember : public FightingCharacter {
