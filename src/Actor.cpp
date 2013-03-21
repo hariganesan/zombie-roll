@@ -13,18 +13,27 @@ RenderableActor::RenderableActor(string d) : Actor(d) {
 Character::Character(string d) : RenderableActor(d) {
 }
 
-void FieldCharacter::moveLeft() {
+// TODO: add objects/borders so that returns false
+bool FieldCharacter::moveLeft() {
 	x -= F_BOX_DIM;
+
+	return true;
 }
 
-void FieldCharacter::moveDown() {
+bool FieldCharacter::moveDown() {
 	y += F_BOX_DIM;
+
+	return true;
 }
 
-void FieldCharacter::moveRight() {
+bool FieldCharacter::moveRight() {
 	x += F_BOX_DIM;
+
+	return true;
 }
 
-void FieldCharacter::moveUp() {
+bool FieldCharacter::moveUp() {
 	y -= F_BOX_DIM;
+
+	return true;
 }

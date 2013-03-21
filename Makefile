@@ -12,7 +12,7 @@ SRC=src
 all: $(SRC)/*.o zombie clean
 
 # build zombie
-zombie: zombie.o Actor.o
+zombie: zombie.o Actor.o Battle.o
 	$(CC) -o $@ $(COCOA) $(GL) $(SDL) $^
 
 $(SRC)/*.o: $(SRC)/*.cpp

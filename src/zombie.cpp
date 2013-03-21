@@ -27,7 +27,8 @@ const char *musicpath = "music/senomar.mid";
 enum {
 	D_HOME,
 	D_FIELD,
-	D_BATTLE
+	D_BATTLE,
+	D_TRANS
 };
 
 using namespace std;
@@ -73,6 +74,8 @@ int main(int argc, char **argv) {
   	toggleMusic();
   }
 
+  srand(time(NULL));
+
 	runGame();
 
 	Mix_CloseAudio();
@@ -88,10 +91,12 @@ void runGame() {
 
 	// game state
 	bool isRunning = true;
+	bool moved = false;
 	Keys keys = Keys();
 
-	int display = D_FIELD;
-	Game *g = new Game();
+	Game *g = new Game("Name", D_FIELD);
+	g->currentArea = new Area(.1);
+	Battle *b = NULL;
 
 	while (isRunning) {
 		// EVENTS
@@ -101,10 +106,7 @@ void runGame() {
 				isRunning = false;
 			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_m) {
 				toggleMusic();
-			}
-
-
-			if        (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
 				keys.left = true;
 			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
 				keys.down = true;
@@ -117,19 +119,34 @@ void runGame() {
 
 		// LOGIC
 
-		if (display == D_FIELD) {
-			if        (keys.left) {
-				g->mc->moveLeft();
+		if (g->display == D_FIELD) {
+			moved = false;
+			if (keys.left) {
+				if (g->mc->moveLeft()) {
+					moved = true;
+				}
 				keys.left = false;
 			} else if (keys.down) {
-				g->mc->moveDown();
+				if (g->mc->moveDown()) {
+					moved = true;
+				}
 				keys.down = false;
 			} else if (keys.right) {
-				g->mc->moveRight();
+				if (g->mc->moveRight()) {
+					moved = true;
+				}
 				keys.right = false;
 			} else if (keys.up) {
-				g->mc->moveUp();
+				if (g->mc->moveUp()) {
+					moved = true;
+				}
 				keys.up = false;
+			}
+
+			// battle!
+			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
+				b = g->randomBattle();
+				g->display = D_BATTLE;
 			}
 		}
 
@@ -140,28 +157,38 @@ void runGame() {
 }
 
 void render(Game *g) {
-		glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT);
 	glPushMatrix();
 	// TODO: change to 0,1 for depth
 	glOrtho(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0, -1, 1); // set matrix
-	SDL_Color TEXT_WHITE = {200, 200, 200};
-	SDL_Color TEXT_BLACK = {20, 20, 20};
-	SDL_Color TEXT_RED = {150, 0, 0};
-	SDL_Rect location;
+	//SDL_Color TEXT_WHITE = {200, 200, 200};
+	//SDL_Color TEXT_BLACK = {20, 20, 20};
+	//SDL_Color TEXT_RED = {150, 0, 0};
+	//SDL_Rect location;
 
 	////////////////
 	// BEGIN DRAWING
 	////////////////
 
-	glColor3ub(255, 255, 255);
-	// draw stuff
-	glBegin(GL_QUADS);
-	glVertex2f(g->mc->x, g->mc->y);
-	glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y);
-	glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y+F_BOX_DIM);
-	glVertex2f(g->mc->x, g->mc->y+F_BOX_DIM);
-	glEnd();
-
+	if (g->display == D_FIELD) {
+		glColor3ub(255, 255, 255);
+		// draw stuff
+		glBegin(GL_QUADS);
+		glVertex2f(g->mc->x, g->mc->y);
+		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y);
+		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y+F_BOX_DIM);
+		glVertex2f(g->mc->x, g->mc->y+F_BOX_DIM);
+		glEnd();
+	} else if (g->display == D_BATTLE) {
+		glColor3ub(0, 0, 0);
+		// draw stuff
+		glBegin(GL_QUADS);
+		glVertex2f(g->mc->x, g->mc->y);
+		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y);
+		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y+F_BOX_DIM);
+		glVertex2f(g->mc->x, g->mc->y+F_BOX_DIM);
+		glEnd();		
+	}
 
 	////////////////
 	// END DRAWING

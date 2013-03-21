@@ -6,6 +6,9 @@
 #include <math.h>
 #include "Elements.hpp"
 
+const int MAX_PARTY_COUNT = 4;
+const int MAX_ENEMIES_COUNT = 4;
+
 using namespace std;
 
 struct Vec2d {
@@ -84,10 +87,10 @@ public:
 	int y;
 
 	FieldCharacter(string d) : Character(d), x(0), y(0) {};
-	void moveLeft();
-	void moveDown();
-	void moveRight();
-	void moveUp();
+	bool moveLeft(); // returns true if moved
+	bool moveDown();
+	bool moveRight();
+	bool moveUp();
 };
 
 class FightingCharacter : public Character {
@@ -116,7 +119,7 @@ class FightingCharacter : public Character {
 
 	Weapon *equippedWeapon;
 	Armor *equippedArmor[2];
-
+public:
 	FightingCharacter(string d, int l, int a, int f, int m, int s, int h, int n) : Character(d), exp(0) {
 		level = l;
 		attack = a;
@@ -126,6 +129,7 @@ class FightingCharacter : public Character {
 		totalHP = h;
 		totalMP = n;
 	}
+	FightingCharacter(string d) : Character(d), exp(0) {};
 };
 
 class PartyMember : public FightingCharacter {
@@ -140,4 +144,5 @@ class Enemy : public FightingCharacter {
 
 public:
 	Enemy(string d, int l, int a, int f, int m, int s, int h, int n);
+	Enemy(string d) : FightingCharacter(d) {};
 };
