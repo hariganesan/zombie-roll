@@ -15,6 +15,7 @@ all: $(SRC)/*.o zombie clean
 zombie: zombie.o Actor.o Battle.o
 	$(CC) -o $@ $(COCOA) $(GL) $(SDL) $^
 
+# build object files
 $(SRC)/*.o: $(SRC)/*.cpp
 	$(CC) $(CFLAGS) -c $^
 
