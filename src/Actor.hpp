@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include "Elements.hpp"
 
 using namespace std;
 
@@ -21,16 +22,23 @@ public:
 };
 
 class RenderableActor : public Actor {
+public:
+	RenderableActor(string d);
 	void draw();
 };
 
 class Item : public RenderableActor {
 	string description;
+
+public:
+	Item(string d);
 };
 
 class Equippable : public RenderableActor {
 	int weight;
 	string description;
+public:
+	Equippable(string d);
 };
 
 class Weapon : public Equippable {
@@ -43,6 +51,9 @@ class Weapon : public Equippable {
 
 	int weaponClass;
 	int attack;
+
+public:
+	Weapon(string d);
 };
 
 class Armor : public Equippable {
@@ -53,10 +64,30 @@ class Armor : public Equippable {
 
 	int armorClass;
 	int defense;
+
+public:
+	Armor(string d);
 };
 
 class Character : public RenderableActor {
 	bool isSpeaking;
+public:
+	Character(string d);
+};
+
+class FieldCharacter : public Character {
+	int sprite;
+
+public:
+	// position in field
+	int x;
+	int y;
+
+	FieldCharacter(string d) : Character(d), x(0), y(0) {};
+	void moveLeft();
+	void moveDown();
+	void moveRight();
+	void moveUp();
 };
 
 class FightingCharacter : public Character {
@@ -83,13 +114,13 @@ class FightingCharacter : public Character {
 	int remainingMP;
 	int status;
 
-	Weapon equippedWeapon;
-	Armor equippedArmor[2];
+	Weapon *equippedWeapon;
+	Armor *equippedArmor[2];
 
-	FightingCharacter(int l, int a, int d, int m, int s, int h, int n) : exp(0) {
+	FightingCharacter(string d, int l, int a, int f, int m, int s, int h, int n) : Character(d), exp(0) {
 		level = l;
 		attack = a;
-		defense = d;
+		defense = f;
 		magic = m;
 		speed = s;
 		totalHP = h;
@@ -99,8 +130,14 @@ class FightingCharacter : public Character {
 
 class PartyMember : public FightingCharacter {
 	Vec2d menuLocation;
+
+public:
+	PartyMember(string d, int l, int a, int f, int m, int s, int h, int n);
 };
 
 class Enemy : public FightingCharacter {
 	int intelligence;
+
+public:
+	Enemy(string d, int l, int a, int f, int m, int s, int h, int n);
 };

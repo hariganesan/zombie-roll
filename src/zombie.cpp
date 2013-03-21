@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 
-#include "Actor.h"
+#include "Battle.hpp"
 
 // window dimensions
 const int WINDOW_WIDTH = 800;
@@ -33,7 +33,7 @@ enum {
 using namespace std;
 
 void runGame();
-void render();
+void render(Game *g);
 void SDL_GL_RenderText(const char *text, SDL_Color color, SDL_Rect *location);
 void toggleMusic(); // toggles music on and off
 
@@ -88,7 +88,10 @@ void runGame() {
 
 	// game state
 	bool isRunning = true;
-	int display = D_HOME;
+	Keys keys = Keys();
+
+	int display = D_FIELD;
+	Game *g = new Game();
 
 	while (isRunning) {
 		// EVENTS
@@ -100,28 +103,43 @@ void runGame() {
 				toggleMusic();
 			}
 
-			if (display == D_FIELD) {
-				if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
-					;
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
-					;
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
-					;
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
-					;
-				}
+
+			if        (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
+				keys.left = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
+				keys.down = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
+				keys.right = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
+				keys.up = true;
 			}
 		}
 
 		// LOGIC
 
+		if (display == D_FIELD) {
+			if        (keys.left) {
+				g->mc->moveLeft();
+				keys.left = false;
+			} else if (keys.down) {
+				g->mc->moveDown();
+				keys.down = false;
+			} else if (keys.right) {
+				g->mc->moveRight();
+				keys.right = false;
+			} else if (keys.up) {
+				g->mc->moveUp();
+				keys.up = false;
+			}
+		}
 
 		// RENDERING
-		render();
+
+		render(g);
 	}
 }
 
-void render() {
+void render(Game *g) {
 		glClear(GL_COLOR_BUFFER_BIT);
 	glPushMatrix();
 	// TODO: change to 0,1 for depth
@@ -135,8 +153,15 @@ void render() {
 	// BEGIN DRAWING
 	////////////////
 
-
+	glColor3ub(255, 255, 255);
 	// draw stuff
+	glBegin(GL_QUADS);
+	glVertex2f(g->mc->x, g->mc->y);
+	glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y);
+	glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y+F_BOX_DIM);
+	glVertex2f(g->mc->x, g->mc->y+F_BOX_DIM);
+	glEnd();
+
 
 	////////////////
 	// END DRAWING

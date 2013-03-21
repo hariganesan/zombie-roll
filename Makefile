@@ -9,13 +9,13 @@ COCOA=-framework Cocoa
 GL=-framework OpenGL -L/sw/lib
 SRC=src
 
-all: zombie clean
+all: $(SRC)/*.o zombie clean
 
 # build zombie
-zombie: zombie.o
+zombie: zombie.o Actor.o
 	$(CC) -o $@ $(COCOA) $(GL) $(SDL) $^
 
-zombie.o: $(SRC)/*.cpp
+$(SRC)/*.o: $(SRC)/*.cpp
 	$(CC) $(CFLAGS) -c $^
 
 clean:

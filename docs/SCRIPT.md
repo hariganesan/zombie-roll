@@ -10,6 +10,7 @@ elements: water, fire, earth, thunder
 neg statuses: poison, darkness, confusion/charm, silence, (slowed), bleed
 pos statuses: (hastened), protect, shell, regen, boost (aka fired up)
 items: potions for each kind, mana potions, revive, zombie-spray, 
+background elemental advantages?
 
 armor: head, chest, legs, (shield)
 weapons: hands, sword, bow/arrow, big sword
@@ -23,3 +24,7 @@ how to set order?
 - randomness? (for all characters at level, pick from...)
 - slowed/hasted?
 - neg statuses? (sleep?)
+
+critical hits?
+speed/speed -> evasion percentage
+
