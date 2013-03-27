@@ -3,6 +3,8 @@
 
 #include <string>
 #include "Actor.hpp"
+#include "SDL/SDL_image.h"
+#include "SDL/SDL_opengl.h"
 
 using namespace std;
 
@@ -49,12 +51,14 @@ class Game {
 
 public:
 	int display;
+	int timer;
 	FieldCharacter *mc;
 	Area *currentArea;
+	GLuint png;
 
-	Game(string d, int p) : currentArea(NULL) {
-		mc = new FieldCharacter(d);
+	Game(string d, int p) : timer(0), currentArea(NULL) {
 		display = p;
+		mc = new FieldCharacter(d);
 	}
 
 	Battle *randomBattle();

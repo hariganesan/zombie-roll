@@ -83,10 +83,12 @@ class FieldCharacter : public Character {
 
 public:
 	// position in field
+	int orig_x;
+	int orig_y;
 	int x;
 	int y;
 
-	FieldCharacter(string d) : Character(d), x(0), y(0) {};
+	FieldCharacter(string d) : Character(d), orig_x(0), orig_y(0), x(0), y(0) {};
 	bool moveLeft(); // returns true if moved
 	bool moveDown();
 	bool moveRight();

@@ -3,6 +3,7 @@
 
 #include "SDL/SDL.h"
 #include "SDL/SDL_mixer.h"
+#include "SDL/SDL_image.h"
 #include "SDL/SDL_opengl.h"
 #include "SDL_ttf/SDL_ttf.h"
 #include <iostream>
@@ -17,25 +18,20 @@ const int MARGIN = 10;
 
 // font
 TTF_Font *font;
-const char *fontpath = "fonts/chintzy.ttf";
+const char *fontpath = "assets/fonts/chintzy.ttf";
 
 // music
 Mix_Music *music = NULL;
-const char *musicpath = "music/senomar.mid";
+const char *musicpath = "assets/music/senomar.mid";
 
-// display options
-enum {
-	D_HOME,
-	D_FIELD,
-	D_BATTLE,
-	D_TRANS
-};
+string pngpath = "assets/images/test/1.png";
 
 using namespace std;
 
 void runGame();
 void render(Game *g);
-void SDL_GL_RenderText(const char *text, SDL_Color color, SDL_Rect *location);
+GLuint SDL_GL_LoadPNG(string f);
+void SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w);
 void toggleMusic(); // toggles music on and off
 
 int main(int argc, char **argv) {
@@ -54,7 +50,7 @@ int main(int argc, char **argv) {
 	// initialize window properties
 	SDL_WM_SetCaption("Magic Hat", NULL);
 	SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32, SDL_OPENGL);
-	glClearColor(0, 0, 0.3, 1); // RGBA
+	glClearColor(0, 0, FIELD_COLOR, 1); // RGBA
 	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT); // viewable part of the window
 	glShadeModel(GL_SMOOTH); // add a gradient
 	glMatrixMode(GL_PROJECTION); // 2D drawing
@@ -71,7 +67,7 @@ int main(int argc, char **argv) {
     printf("Unable to open audio!\n");
     exit(1);
   } else {
-  	toggleMusic();
+  	//toggleMusic();
   }
 
   srand(time(NULL));
@@ -96,6 +92,8 @@ void runGame() {
 
 	Game *g = new Game("Name", D_FIELD);
 	g->currentArea = new Area(.1);
+	g->png = SDL_GL_LoadPNG(pngpath);
+
 	Battle *b = NULL;
 
 	while (isRunning) {
@@ -146,8 +144,16 @@ void runGame() {
 			// battle!
 			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
 				b = g->randomBattle();
-				g->display = D_BATTLE;
+				g->display = DT_FIELD_BATTLE;
 			}
+		} else if (g->display == DT_FIELD_BATTLE) {
+			if (g->timer > 75) {
+				g->timer = 0;
+				g->display = D_BATTLE;
+				glClearColor(1, 1, 1, 1); //white background
+			}
+		} else if (g->display == D_BATTLE) {
+
 		}
 
 		// RENDERING
@@ -171,23 +177,34 @@ void render(Game *g) {
 	////////////////
 
 	if (g->display == D_FIELD) {
-		glColor3ub(255, 255, 255);
 		// draw stuff
+		glColor3ub(255, 255, 255);
 		glBegin(GL_QUADS);
 		glVertex2f(g->mc->x, g->mc->y);
 		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y);
 		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y+F_BOX_DIM);
 		glVertex2f(g->mc->x, g->mc->y+F_BOX_DIM);
 		glEnd();
-	} else if (g->display == D_BATTLE) {
-		glColor3ub(0, 0, 0);
+	} else if (g->display == DT_FIELD_BATTLE) {
+		// figure out coordinates
+		g->mc->x = g->mc->orig_x + 5*g->timer*cos(g->timer);
+		g->mc->y = g->mc->orig_y + 5*g->timer*sin(g->timer);
+		g->timer++;
+
 		// draw stuff
+		glColor3ub(240, 0, 0);
 		glBegin(GL_QUADS);
 		glVertex2f(g->mc->x, g->mc->y);
 		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y);
 		glVertex2f(g->mc->x+F_BOX_DIM, g->mc->y+F_BOX_DIM);
 		glVertex2f(g->mc->x, g->mc->y+F_BOX_DIM);
-		glEnd();		
+		glEnd();
+
+		// fade to black
+		glClearColor(0, 0, 0.3 - 0.3*g->timer/75, 0);
+
+	} else if (g->display == D_BATTLE) {
+		SDL_GL_RenderPNG(g->png, 100, 100, 200, 100);
 	}
 
 	////////////////
@@ -196,9 +213,76 @@ void render(Game *g) {
 
 	glPopMatrix();
 	SDL_GL_SwapBuffers();
-	SDL_Delay(33); // frame rate 30ms
+	SDL_Delay(1000/SDL_FRAME_RATE); // frame rate 30ms
 	return;
 	
+}
+
+GLuint SDL_GL_LoadPNG(string f) {
+	SDL_Surface *image = IMG_Load(f.c_str());
+  if (image == NULL) {
+    return -1;
+  }
+  SDL_DisplayFormatAlpha(image);
+  //unsigned object(0);
+  GLuint object;
+  glGenTextures(1, &object);
+  glBindTexture(GL_TEXTURE_2D, object);
+  glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP_TO_EDGE);
+  glTexParameterf(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP_TO_EDGE);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->w, image->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->pixels);
+  SDL_FreeSurface(image);
+
+  return object;
+}
+
+void SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w) {
+// TODO: transparency and flashing
+
+/*
+  int num1 = 300;
+  glColor3f(1,0,0);
+  glDisable( GL_TEXTURE_2D );
+  glBegin( GL_QUADS );
+      // Top-left vertex (corner)
+      glTexCoord2i( 0, 0 );
+      glVertex3f( 0, 0, 0 );
+
+      // Bottom-left vertex (corner)
+      glTexCoord2i( 1, 0 );
+      glVertex3f( num1, 0, 0 );
+
+      // Bottom-right vertex (corner)
+      glTexCoord2i( 1, 1 );
+      glVertex3f( num1, num1, 0 );
+
+      // Top-right vertex (corner)
+      glTexCoord2i( 0, 1 );
+      glVertex3f( 0, num1, 0 );
+  glEnd(); */
+  glBindTexture( GL_TEXTURE_2D, object );
+  glColor3f(1,1,1);
+  glEnable( GL_TEXTURE_2D );
+
+  glBegin( GL_QUADS );
+
+      glTexCoord2i( 0, 0 );
+      glVertex3f( x, y, 0 );
+
+      glTexCoord2i( 1, 0 );
+      glVertex3f( x+w, y, 0 );
+
+      glTexCoord2i( 1, 1 );
+      glVertex3f( x+w, y+h, 0 );
+
+      glTexCoord2i( 0, 1 );
+      glVertex3f( x, y+h, 0 );
+  glEnd();
+
+  SDL_GL_SwapBuffers();
+
 }
 
 void toggleMusic() {
