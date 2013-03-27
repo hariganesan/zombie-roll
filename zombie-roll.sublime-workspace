@@ -11,7 +11,7 @@
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 380,
+				"buffer_size": 443,
 				"line_ending": "Unix",
 				"name": "# Hari Ganesan 2/4/13"
 			}
@@ -20,24 +20,58 @@
 			"file": "src/zombie.cpp",
 			"settings":
 			{
-				"buffer_size": 3512,
+				"buffer_size": 7177,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/Actor.h",
+			"file": "src/Elements.hpp",
 			"settings":
 			{
-				"buffer_size": 1251,
+				"buffer_size": 372,
 				"line_ending": "Unix",
-				"name": "// Hari Ganesan 3/10/13"
+				"name": "// Hari Ganesan 3/21/13"
+			}
+		},
+		{
+			"file": "docs/SCRIPT.md",
+			"settings":
+			{
+				"buffer_size": 684,
+				"line_ending": "Unix",
+				"name": "SCRIPT"
+			}
+		},
+		{
+			"file": "src/Battle.hpp",
+			"settings":
+			{
+				"buffer_size": 992,
+				"line_ending": "Unix",
+				"name": "// Hari Ganesan 3/20/13"
+			}
+		},
+		{
+			"file": "src/Battle.cpp",
+			"settings":
+			{
+				"buffer_size": 294,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "src/Actor.cpp",
 			"settings":
 			{
-				"buffer_size": 112,
+				"buffer_size": 608,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Actor.hpp",
+			"settings":
+			{
+				"buffer_size": 2298,
 				"line_ending": "Unix"
 			}
 		}
@@ -70,6 +104,7 @@
 	},
 	"file_history":
 	[
+		"/Users/Hari/scm/zombie-roll/src/Actor.h",
 		"/Users/Hari/scm/zombie-roll/src/Actor.cpp",
 		"/Users/Hari/scm/zombie-roll/zombie.cpp",
 		"/sw/include/sasl/prop.h",
@@ -115,6 +150,39 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"1",
+			"image->h/10",
+			"image->w/10",
+			"1",
+			"_",
+			"200",
+			"228",
+			"328",
+			"or",
+			"F_BOX_DIM;",
+			"timer",
+			"display",
+			"255",
+			"oid",
+			"DIM;",
+			"))",
+			"g->mc",
+			"keys",
+			"keys.left",
+			"mc",
+			"mov",
+			"FieldCharac",
+			"FieldCharact",
+			"FieldCharacter",
+			"FieldCharact",
+			"mo",
+			"else if ",
+			"	mc->",
+			".",
+			".m",
+			".",
+			"if",
+			",",
 			")",
 			"W_",
 			"W",
@@ -209,35 +277,7 @@
 			"lli",
 			"uli",
 			"lli",
-			"CHILD",
-			"tree_cols",
-			"               ",
-			"              ",
-			"             ",
-			"            ",
-			"           ",
-			"          ",
-			"         ",
-			"        ",
-			"       ",
-			"      ",
-			"     ",
-			"    ",
-			"   ",
-			"  ",
-			"CHILD",
-			"qt",
-			"qtd",
-			"qt",
-			"qtCols",
-			"  ",
-			"    ",
-			"   ",
-			"  ",
-			"    ",
-			"   ",
-			"  ",
-			"init_quadrant"
+			"CHILD"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -255,7 +295,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -263,15 +303,15 @@
 					"file": "Makefile",
 					"settings":
 					{
-						"buffer_size": 380,
+						"buffer_size": 443,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								245,
-								245
+								176,
+								176
 							]
 						],
 						"settings":
@@ -290,15 +330,15 @@
 					"file": "src/zombie.cpp",
 					"settings":
 					{
-						"buffer_size": 3512,
+						"buffer_size": 7177,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								523,
-								523
+								4722,
+								4722
 							]
 						],
 						"settings":
@@ -307,53 +347,107 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1402.0,
+						"translation.y": 2892.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/Actor.h",
+					"file": "src/Elements.hpp",
 					"settings":
 					{
-						"buffer_size": 1251,
+						"buffer_size": 372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1000,
-								1000
+								129,
+								129
 							]
 						],
 						"settings":
 						{
-							"auto_name": "// Hari Ganesan 3/10/13",
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "// Hari Ganesan 3/21/13",
+							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 854.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/Actor.cpp",
+					"file": "docs/SCRIPT.md",
 					"settings":
 					{
-						"buffer_size": 112,
+						"buffer_size": 684,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								112,
-								112
+								359,
+								359
+							]
+						],
+						"settings":
+						{
+							"auto_name": "SCRIPT",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Battle.hpp",
+					"settings":
+					{
+						"buffer_size": 992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								155,
+								155
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// Hari Ganesan 3/20/13",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/Battle.cpp",
+					"settings":
+					{
+						"buffer_size": 294,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								294,
+								294
 							]
 						],
 						"settings":
@@ -362,6 +456,59 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/Actor.cpp",
+					"settings":
+					{
+						"buffer_size": 608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								589,
+								589
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/Actor.hpp",
+					"settings":
+					{
+						"buffer_size": 2298,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1215,
+								1215
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1239.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
