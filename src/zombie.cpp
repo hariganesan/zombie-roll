@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	// initialize window properties
-	SDL_WM_SetCaption("Magic Hat", NULL);
+	SDL_WM_SetCaption("Zombie Roll", NULL);
 	SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32, SDL_OPENGL);
 	glClearColor(0, 0, FIELD_COLOR, 1); // RGBA
 	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT); // viewable part of the window
@@ -90,7 +90,7 @@ void runGame() {
 	bool moved = false;
 	Keys keys = Keys();
 
-	Game *g = new Game("Name", D_FIELD);
+	Game *g = new Game("Your Name Here", D_FIELD);
 	g->currentArea = new Area(.1);
 	g->png = SDL_GL_LoadPNG(pngpath);
 
@@ -147,7 +147,7 @@ void runGame() {
 				g->display = DT_FIELD_BATTLE;
 			}
 		} else if (g->display == DT_FIELD_BATTLE) {
-			if (g->timer > 75) {
+			if (g->timer > TT_FIELD_BATTLE) {
 				g->timer = 0;
 				g->display = D_BATTLE;
 				glClearColor(1, 1, 1, 1); //white background
@@ -201,7 +201,7 @@ void render(Game *g) {
 		glEnd();
 
 		// fade to black
-		glClearColor(0, 0, 0.3 - 0.3*g->timer/75, 0);
+		glClearColor(0, 0, FIELD_COLOR - FIELD_COLOR*g->timer/TT_FIELD_BATTLE, 0);
 
 	} else if (g->display == D_BATTLE) {
 		SDL_GL_RenderPNG(g->png, 100, 100, 200, 100);

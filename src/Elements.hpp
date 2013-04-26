@@ -6,6 +6,9 @@ const int SDL_FRAME_RATE = 30;
 
 const double FIELD_COLOR = 0.3;
 
+// transition time
+const int TT_FIELD_BATTLE = 75;
+
 // display options
 enum {
 	D_HOME,

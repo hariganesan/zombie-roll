@@ -20,7 +20,7 @@
 			"file": "src/zombie.cpp",
 			"settings":
 			{
-				"buffer_size": 7177,
+				"buffer_size": 7231,
 				"line_ending": "Unix"
 			}
 		},
@@ -28,7 +28,7 @@
 			"file": "src/Elements.hpp",
 			"settings":
 			{
-				"buffer_size": 372,
+				"buffer_size": 424,
 				"line_ending": "Unix",
 				"name": "// Hari Ganesan 3/21/13"
 			}
@@ -104,6 +104,7 @@
 	},
 	"file_history":
 	[
+		"/Users/Hari/scm/zombie-roll/src/main.cpp",
 		"/Users/Hari/scm/zombie-roll/src/Actor.h",
 		"/Users/Hari/scm/zombie-roll/src/Actor.cpp",
 		"/Users/Hari/scm/zombie-roll/zombie.cpp",
@@ -150,6 +151,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"75",
+			"0.3",
 			"1",
 			"image->h/10",
 			"image->w/10",
@@ -275,9 +278,7 @@
 			"qt",
 			"uli",
 			"lli",
-			"uli",
-			"lli",
-			"CHILD"
+			"uli"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -295,7 +296,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -310,8 +311,8 @@
 						"selection":
 						[
 							[
-								176,
-								176
+								427,
+								427
 							]
 						],
 						"settings":
@@ -330,15 +331,15 @@
 					"file": "src/zombie.cpp",
 					"settings":
 					{
-						"buffer_size": 7177,
+						"buffer_size": 7231,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4722,
-								4722
+								239,
+								239
 							]
 						],
 						"settings":
@@ -347,7 +348,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2892.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -357,15 +358,15 @@
 					"file": "src/Elements.hpp",
 					"settings":
 					{
-						"buffer_size": 372,
+						"buffer_size": 424,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								129,
-								129
+								424,
+								424
 							]
 						],
 						"settings":
@@ -472,13 +473,14 @@
 						"selection":
 						[
 							[
-								589,
-								589
+								345,
+								345
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -498,8 +500,8 @@
 						"selection":
 						[
 							[
-								1215,
-								1215
+								263,
+								517
 							]
 						],
 						"settings":
@@ -508,7 +510,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1239.0,
+						"translation.y": 690.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
