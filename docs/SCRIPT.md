@@ -7,9 +7,9 @@ SCRIPT
 
 stats: attack, defense, magic, speed
 elements: water, fire, earth, thunder
-neg statuses: poison, darkness, confusion/charm, silence, (slowed), bleed
-pos statuses: (hastened), protect, shell, regen, boost (aka fired up)
-items: potions for each kind, mana potions, revive, zombie-spray, 
+neg statuses: poison, darkness, confusion/charm, silence, (slowed), bleed, DRUNK
+pos statuses: (hastened), protect, shell, regen, boost/overdrive, beserk
+items: potions for each kind, mana potions, revive, zombie-spray
 background elemental advantages?
 
 armor: head, chest, legs, (shield)

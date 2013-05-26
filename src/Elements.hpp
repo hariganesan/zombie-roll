@@ -64,10 +64,44 @@ const int LSBAR_INDICATOR_HP = 0;
 const int LSBAR_INDICATOR_MP = 0;
 const int LSBAR_OVERDRIVE_BAR = 0;
 
+// SPRITE SHEETS
+
+// CHARACTERS
+// PM = party member, EN = enemy
+enum {
+	SC_MC,
+	SC_PM1,
+	SC_PM2,
+	SC_PM3,
+	SC_EN1
+};
+
+// FIELD
+enum {
+	SF_FRONT,
+	SF_BACK,
+	SF_LEFT,
+	SF_RIGHT
+};
+
+// BATTLE
+enum {
+	SB_NORMAL,
+	SB_POISON,
+	SB_DARKNESS,
+	SB_CONFUSION,
+	SB_SILENCE,
+	SB_BLEED,
+	SB_BESERK,
+	SB_DRUNK,
+	SB_OVERDRIVE
+};
+
 // ATB system
 //
 
 
+// DISPLAYS
 enum {
 	// main displays
 	D_MAIN,
