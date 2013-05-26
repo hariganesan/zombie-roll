@@ -1,9 +1,7 @@
 // Hari Ganesan 3/10/13
 // zombie-roll: actor library file
 
-#include <iostream>
 #include <string>
-#include <math.h>
 #include "Elements.hpp"
 
 const int MAX_PARTY_COUNT = 4;

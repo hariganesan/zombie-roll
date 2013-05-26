@@ -1,10 +1,7 @@
 // Hari Ganesan 3/20/13
 // zombie-roll: Battle library file
 
-#include <string>
 #include "Actor.hpp"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_opengl.h"
 
 using namespace std;
 

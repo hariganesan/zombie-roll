@@ -11,7 +11,7 @@
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 443,
+				"buffer_size": 452,
 				"line_ending": "Unix",
 				"name": "# Hari Ganesan 2/4/13"
 			}
@@ -20,17 +20,26 @@
 			"file": "src/zombie.cpp",
 			"settings":
 			{
-				"buffer_size": 7231,
+				"buffer_size": 3753,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/Elements.hpp",
+			"file": "src/Render.hpp",
 			"settings":
 			{
-				"buffer_size": 424,
+				"buffer_size": 345,
 				"line_ending": "Unix",
-				"name": "// Hari Ganesan 3/21/13"
+				"name": "// Hari Ganesan 5/13/13"
+			}
+		},
+		{
+			"file": "src/Render.cpp",
+			"settings":
+			{
+				"buffer_size": 3264,
+				"line_ending": "Unix",
+				"name": "// Hari Ganesan 5/13/13"
 			}
 		},
 		{
@@ -43,35 +52,35 @@
 			}
 		},
 		{
-			"file": "src/Battle.hpp",
+			"file": "docs/TODO.md",
 			"settings":
 			{
-				"buffer_size": 992,
+				"buffer_size": 77,
 				"line_ending": "Unix",
-				"name": "// Hari Ganesan 3/20/13"
-			}
-		},
-		{
-			"file": "src/Battle.cpp",
-			"settings":
-			{
-				"buffer_size": 294,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Actor.cpp",
-			"settings":
-			{
-				"buffer_size": 608,
-				"line_ending": "Unix"
+				"name": "TODO"
 			}
 		},
 		{
 			"file": "src/Actor.hpp",
 			"settings":
 			{
-				"buffer_size": 2298,
+				"buffer_size": 2260,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Battle.hpp",
+			"settings":
+			{
+				"buffer_size": 919,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Elements.hpp",
+			"settings":
+			{
+				"buffer_size": 1770,
 				"line_ending": "Unix"
 			}
 		}
@@ -104,9 +113,13 @@
 	},
 	"file_history":
 	[
+		"/Users/Hari/scm/zombie-roll/src/Elements.hpp",
+		"/Users/Hari/scm/zombie-roll/src/Actor.hpp",
+		"/Users/Hari/scm/zombie-roll/src/Actor.cpp",
+		"/Users/Hari/scm/zombie-roll/src/Battle.hpp",
+		"/Users/Hari/scm/zombie-roll/src/Battle.cpp",
 		"/Users/Hari/scm/zombie-roll/src/main.cpp",
 		"/Users/Hari/scm/zombie-roll/src/Actor.h",
-		"/Users/Hari/scm/zombie-roll/src/Actor.cpp",
 		"/Users/Hari/scm/zombie-roll/zombie.cpp",
 		"/sw/include/sasl/prop.h",
 		"/Users/Hari/scm/yale-tetris/tetris.cpp",
@@ -151,6 +164,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"LB",
+			"ENE",
 			"75",
 			"0.3",
 			"1",
@@ -276,8 +291,6 @@
 			"qt",
 			"qtd",
 			"qt",
-			"uli",
-			"lli",
 			"uli"
 		],
 		"highlight": true,
@@ -296,7 +309,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -304,15 +317,15 @@
 					"file": "Makefile",
 					"settings":
 					{
-						"buffer_size": 443,
+						"buffer_size": 452,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								427,
-								427
+								327,
+								327
 							]
 						],
 						"settings":
@@ -331,15 +344,15 @@
 					"file": "src/zombie.cpp",
 					"settings":
 					{
-						"buffer_size": 7231,
+						"buffer_size": 3753,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								239,
-								239
+								2225,
+								2225
 							]
 						],
 						"settings":
@@ -348,30 +361,30 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1118.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/Elements.hpp",
+					"file": "src/Render.hpp",
 					"settings":
 					{
-						"buffer_size": 424,
+						"buffer_size": 345,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								424,
-								424
+								136,
+								136
 							]
 						],
 						"settings":
 						{
-							"auto_name": "// Hari Ganesan 3/21/13",
+							"auto_name": "// Hari Ganesan 5/13/13",
 							"syntax": "Packages/C++/C++.tmLanguage"
 						},
 						"translation.x": 0.0,
@@ -382,6 +395,33 @@
 				},
 				{
 					"buffer": 3,
+					"file": "src/Render.cpp",
+					"settings":
+					{
+						"buffer_size": 3264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1391,
+								1391
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// Hari Ganesan 5/13/13",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 883.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "docs/SCRIPT.md",
 					"settings":
 					{
@@ -392,8 +432,8 @@
 						"selection":
 						[
 							[
-								359,
-								359
+								360,
+								360
 							]
 						],
 						"settings":
@@ -408,52 +448,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/Battle.hpp",
-					"settings":
-					{
-						"buffer_size": 992,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								155,
-								155
-							]
-						],
-						"settings":
-						{
-							"auto_name": "// Hari Ganesan 3/20/13",
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 5,
-					"file": "src/Battle.cpp",
+					"file": "docs/TODO.md",
 					"settings":
 					{
-						"buffer_size": 294,
+						"buffer_size": 77,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								294,
-								294
+								77,
+								77
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"auto_name": "TODO",
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -463,18 +476,18 @@
 				},
 				{
 					"buffer": 6,
-					"file": "src/Actor.cpp",
+					"file": "src/Actor.hpp",
 					"settings":
 					{
-						"buffer_size": 608,
+						"buffer_size": 2260,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								345,
-								345
+								60,
+								60
 							]
 						],
 						"settings":
@@ -490,18 +503,18 @@
 				},
 				{
 					"buffer": 7,
-					"file": "src/Actor.hpp",
+					"file": "src/Battle.hpp",
 					"settings":
 					{
-						"buffer_size": 2298,
+						"buffer_size": 919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								263,
-								517
+								82,
+								82
 							]
 						],
 						"settings":
@@ -510,7 +523,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 690.0,
+						"translation.y": 275.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/Elements.hpp",
+					"settings":
+					{
+						"buffer_size": 1770,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
