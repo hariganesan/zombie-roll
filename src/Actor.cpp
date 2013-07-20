@@ -3,39 +3,29 @@
 
 #include "Actor.hpp"
 
-Actor::Actor(string d) {
-	id = d;
-}
-
-RenderableActor::RenderableActor(string d) : Actor(d) {
-}
-
-Character::Character(string d) : RenderableActor(d) {
-}
-
 // TODO: add objects/borders so that returns false
-bool FieldCharacter::moveLeft() {
+bool Character::moveLeft() {
 	x -= F_BOX_DIM;
 	orig_x = x;
 
 	return true;
 }
 
-bool FieldCharacter::moveDown() {
+bool Character::moveDown() {
 	y += F_BOX_DIM;
 	orig_y = y;
 
 	return true;
 }
 
-bool FieldCharacter::moveRight() {
+bool Character::moveRight() {
 	x += F_BOX_DIM;
 	orig_x = x;
 
 	return true;
 }
 
-bool FieldCharacter::moveUp() {
+bool Character::moveUp() {
 	y -= F_BOX_DIM;
 	orig_y = y;
 

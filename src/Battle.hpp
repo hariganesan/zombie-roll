@@ -13,11 +13,10 @@ class Battle {
 
 public:
 	int enemyCount;
-	Enemy* enemies[MAX_ENEMY_COUNT];
+	Enemy *enemies[MAX_ENEMY_COUNT];
 
 	Battle();
 	~Battle();
-
 	void addEnemy(Enemy *e) {
 		enemies[enemyCount] = e;
 		enemyCount++;
@@ -39,13 +38,13 @@ public:
 class Game {
 	int music;
 	int background;
-	int partyCount;
-	PartyMember* party[MAX_PARTY_COUNT];
 
 public:
 	int display;
 	int timer;
-	FieldCharacter *mc;
+	int partyCount;
+	PartyMember *party[MAX_PARTY_COUNT];
+	PartyMember *mc;
 	Area *currentArea;
 	GLuint spriteSheets[MAX_SPRITE_SHEET_COUNT];
 	Battle *b;

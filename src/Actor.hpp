@@ -15,12 +15,12 @@ class Actor {
 	Vec2d position;
 
 public:
-	Actor(string d);
+	Actor(string d) : id(d) {};
 };
 
 class RenderableActor : public Actor {
 public:
-	RenderableActor(string d);
+	RenderableActor(string d) : Actor(d) {};
 	void draw();
 };
 
@@ -67,12 +67,6 @@ public:
 };
 
 class Character : public RenderableActor {
-	bool isSpeaking;
-public:
-	Character(string d);
-};
-
-class FieldCharacter : public Character {
 	int sprite;
 
 public:
@@ -82,7 +76,7 @@ public:
 	int x;
 	int y;
 
-	FieldCharacter(string d) : Character(d), orig_x(0), orig_y(0), x(0), y(0) {};
+	Character(string d) : RenderableActor(d), orig_x(0), orig_y(0), x(0), y(0) {};
 	bool moveLeft(); // returns true if moved
 	bool moveDown();
 	bool moveRight();
@@ -133,6 +127,7 @@ class PartyMember : public FightingCharacter {
 
 public:
 	PartyMember(string d, int l, int a, int f, int m, int s, int h, int n);
+	PartyMember(string d) : FightingCharacter(d) {};
 };
 
 class Enemy : public FightingCharacter {

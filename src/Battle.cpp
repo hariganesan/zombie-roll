@@ -17,16 +17,18 @@ Battle::~Battle() {
 			delete tmp;
 		}
 	}
-
 }
 
-Game::Game(string d, int p) : timer(0), currentArea(NULL), b(NULL) {
-	display = p;
-	mc = new FieldCharacter(d);
-
+Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL), b(NULL) {
 	for (int i = 0; i < MAX_PARTY_COUNT; i++) {
 		party[i] = NULL;
 	}
+
+	display = p;
+
+	// create MC
+	mc = new PartyMember(d);
+	party[0] = mc;
 }
 
 Game::~Game() {

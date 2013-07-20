@@ -42,6 +42,8 @@ void MyWindow::run() {
 			if (event.type == SDL_QUIT || 
 				 (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_q)) {
 				isRunning = false;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_p) {
+				printStatus();
 			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_m) {
 				toggleMusic();
 			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
@@ -232,10 +234,14 @@ void MyWindow::printStatus() {
 		return;
 	}
 
+	cout << "------------" << endl;
 	cout << "game running" << endl;
+	cout << g->partyCount << " party members" << endl;
 
 	if (g->b) {
 		cout << "state: battle" << endl;
-
+		cout << g->b->enemyCount << " enemies" << endl;
 	}
+
+	cout << "------------" << endl;
 }
