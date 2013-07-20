@@ -11,6 +11,7 @@ struct Vec2d {
 };
 
 class Actor {
+protected:
 	string id;
 	Vec2d position;
 
@@ -110,7 +111,9 @@ class FightingCharacter : public Character {
 	Weapon *equippedWeapon;
 	Armor *equippedArmor[2];
 public:
-	FightingCharacter(string d, int l, int a, int f, int m, int s, int h, int n) : Character(d), exp(0) {
+	FightingCharacter(string d, int a, int f, int m, int s, 
+										int l = 1, int h = 25, int n = 10) : Character(d), exp(0)
+										, remainingHP(h), remainingMP(n) {
 		level = l;
 		attack = a;
 		defense = f;
@@ -118,22 +121,28 @@ public:
 		speed = s;
 		totalHP = h;
 		totalMP = n;
+
+		equippedWeapon = NULL;
+		equippedArmor[0] = NULL;
+		equippedArmor[1] = NULL;
 	}
-	FightingCharacter(string d) : Character(d), exp(0) {};
+	void printStatus();
 };
 
 class PartyMember : public FightingCharacter {
 	Vec2d menuLocation;
 
 public:
-	PartyMember(string d, int l, int a, int f, int m, int s, int h, int n);
-	PartyMember(string d) : FightingCharacter(d) {};
+	PartyMember(string d, int a, int f, int m, int s, 
+							int l = 1, int h = 25, int n = 10)
+							: FightingCharacter(d, a, f, m, s, l, h, n) {};
 };
 
 class Enemy : public FightingCharacter {
 	int intelligence;
 
 public:
-	Enemy(string d, int l, int a, int f, int m, int s, int h, int n);
-	Enemy(string d) : FightingCharacter(d) {};
+	Enemy(string d, int a = 4, int f = 4, int m = 4, int s = 2, 
+				int l = 1, int h = 10, int n = 10)
+				: FightingCharacter(d, a, f, m, s, l, h, n) {};
 };

@@ -27,7 +27,7 @@ Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL), b(NULL
 	display = p;
 
 	// create MC
-	mc = new PartyMember(d);
+	mc = new PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, MC_MAG_INIT, MC_SPE_INIT);
 	party[0] = mc;
 }
 
@@ -73,8 +73,6 @@ void Game::randomBattle() {
 	createBattle();
 
 	for (int i = 0; i < enemyCount; i++) {
-		b->addEnemy(new Enemy("zombie"));
+		b->addEnemy(new Enemy("Zombie"));
 	}
-
-	return;
 }

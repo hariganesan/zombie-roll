@@ -69,6 +69,19 @@ const int MAX_SPRITE_SHEET_COUNT = 1;
 // CHARACTERS
 const int MAX_PARTY_COUNT = 4;
 const int MAX_ENEMY_COUNT = 4;
+
+const int MC_ATT_INIT = 4;
+const int MC_DEF_INIT = 7;
+const int MC_MAG_INIT = 0;
+const int MC_SPE_INIT = 4;
+
+const int PM1_ATT_INIT = 4;
+const int PM1_DEF_INIT = 4;
+const int PM1_MAG_INIT = 0;
+const int PM1_SPE_INIT = 7;
+
+
+// STATUSES
 // PM = party member, EN = enemy
 enum {
 	SC_MC,

@@ -17,7 +17,7 @@ void MyWindow::Init() {
 	moved = false;
 	initKeys();
 	
-	g = new Game("Your Name Here", D_FIELD);
+	g = new Game("Hari", D_FIELD);
 	g->currentArea = new Area(.1);
 
 	// preload assets (testing)
@@ -237,10 +237,22 @@ void MyWindow::printStatus() {
 	cout << "------------" << endl;
 	cout << "game running" << endl;
 	cout << g->partyCount << " party members" << endl;
+	
+	for (int i = 0; i < g->partyCount; i++) {
+		cout << i << ": ";
+		g->party[i]->printStatus();
+	}
 
 	if (g->b) {
 		cout << "state: battle" << endl;
 		cout << g->b->enemyCount << " enemies" << endl;
+		
+		for (int i = 0; i < g->b->enemyCount; i++) {
+			cout << i << ": ";
+			g->b->enemies[i]->printStatus();
+		}
+	} else {
+		cout << "state: field" << endl;
 	}
 
 	cout << "------------" << endl;

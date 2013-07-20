@@ -7,65 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "docs/TODO.md",
-			"settings":
-			{
-				"buffer_size": 117,
-				"line_ending": "Unix",
-				"name": "TODO"
-			}
-		},
-		{
-			"file": "docs/SCRIPT.md",
-			"settings":
-			{
-				"buffer_size": 692,
-				"line_ending": "Unix",
-				"name": "SCRIPT"
-			}
-		},
-		{
-			"file": "src/zombie.cpp",
-			"settings":
-			{
-				"buffer_size": 3809,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Render.cpp",
-			"settings":
-			{
-				"buffer_size": 2824,
-				"line_ending": "Unix",
-				"name": "// Hari Ganesan 5/13/13"
-			}
-		},
-		{
-			"file": "src/Battle.hpp",
-			"settings":
-			{
-				"buffer_size": 873,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Elements.hpp",
-			"settings":
-			{
-				"buffer_size": 2136,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/Battle.cpp",
-			"settings":
-			{
-				"buffer_size": 400,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -96,12 +37,16 @@
 	"file_history":
 	[
 		"/Users/Hari/scm/zombie-roll/src/Battle.cpp",
+		"/Users/Hari/scm/zombie-roll/src/zombie.cpp",
+		"/Users/Hari/scm/zombie-roll/src/Render.cpp",
 		"/Users/Hari/scm/zombie-roll/src/Actor.hpp",
-		"/Users/Hari/scm/zombie-roll/src/Render.hpp",
-		"/Users/Hari/scm/zombie-roll/Makefile",
-		"/Users/Hari/scm/zombie-roll/src/Elements.hpp",
 		"/Users/Hari/scm/zombie-roll/src/Actor.cpp",
 		"/Users/Hari/scm/zombie-roll/src/Battle.hpp",
+		"/Users/Hari/scm/zombie-roll/src/Render.hpp",
+		"/Users/Hari/scm/zombie-roll/src/Elements.hpp",
+		"/Users/Hari/scm/zombie-roll/docs/TODO.md",
+		"/Users/Hari/scm/zombie-roll/docs/SCRIPT.md",
+		"/Users/Hari/scm/zombie-roll/Makefile",
 		"/Users/Hari/scm/zombie-roll/src/main.cpp",
 		"/Users/Hari/scm/zombie-roll/src/Actor.h",
 		"/Users/Hari/scm/zombie-roll/zombie.cpp",
@@ -148,6 +93,25 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Field",
+			"FieldCharacter",
+			"Battle",
+			"Enemies",
+			"enemies",
+			"enemiesCount",
+			"party",
+			"Party",
+			"party",
+			"{\n",
+			";\n",
+			"bool ",
+			" const",
+			" =",
+			"const ",
+			"char",
+			"font",
+			"TTF",
+			"w->",
 			"C_",
 			"C",
 			"MC_",
@@ -256,26 +220,7 @@
 			"boxs",
 			"node",
 			"nod",
-			"nodes",
-			"node",
-			"//",
-			"	",
-			"dist =",
-			"lldist =",
-			"dist",
-			"ruler",
-			"qtsize",
-			"*size",
-			"size",
-			"qt",
-			"distance",
-			"queueSize",
-			"qt",
-			"inBox",
-			"nodesToCheck",
-			"noCandidates",
-			"continue;\n      }\n      ",
-			"CHILD"
+			"nodes"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -293,197 +238,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "docs/TODO.md",
-					"settings":
-					{
-						"buffer_size": 117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								105,
-								105
-							]
-						],
-						"settings":
-						{
-							"auto_name": "TODO",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "docs/SCRIPT.md",
-					"settings":
-					{
-						"buffer_size": 692,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								334,
-								334
-							]
-						],
-						"settings":
-						{
-							"auto_name": "SCRIPT",
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/zombie.cpp",
-					"settings":
-					{
-						"buffer_size": 3809,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1965,
-								1965
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/Render.cpp",
-					"settings":
-					{
-						"buffer_size": 2824,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1564,
-								1564
-							]
-						],
-						"settings":
-						{
-							"auto_name": "// Hari Ganesan 5/13/13",
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/Battle.hpp",
-					"settings":
-					{
-						"buffer_size": 873,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								822,
-								822
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 207.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/Elements.hpp",
-					"settings":
-					{
-						"buffer_size": 2136,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2136,
-								2023
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/Battle.cpp",
-					"settings":
-					{
-						"buffer_size": 400,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								104,
-								77
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
