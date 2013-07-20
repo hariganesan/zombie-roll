@@ -10,12 +10,10 @@
 #include "SDL/SDL_opengl.h"
 #include "SDL_ttf/SDL_ttf.h"
 
-
 // window dimensions
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 const int MARGIN = 10;
-
 
 const int SDL_FRAME_RATE = 30;
 const int F_BOX_DIM = 20; // field box dimension
@@ -66,10 +64,11 @@ const int LSBAR_INDICATOR_MP = 0;
 const int LSBAR_OVERDRIVE_BAR = 0;
 
 // SPRITE SHEETS
-
 const int MAX_SPRITE_SHEET_COUNT = 1;
 
 // CHARACTERS
+const int MAX_PARTY_COUNT = 4;
+const int MAX_ENEMY_COUNT = 4;
 // PM = party member, EN = enemy
 enum {
 	SC_MC,

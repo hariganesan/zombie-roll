@@ -47,6 +47,7 @@ int main(int argc, char **argv) {
 
   // open and close window
   MyWindow *w = new MyWindow();
+  w->run();
 	delete w;
 
 	Mix_CloseAudio();

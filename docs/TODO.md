@@ -5,6 +5,7 @@ TODO
 - Andrew?
 - render sprites
 - make battle screen
+- resource manager
 
 Finished
 ----------

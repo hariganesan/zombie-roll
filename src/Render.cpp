@@ -7,23 +7,37 @@
 //	TTF_CloseFont(font);
 //}
 
+using std::cin;					using std::cout;
+using std::cerr;				using std::endl;
+using std::string;
+
 void MyWindow::Init() {
 	// initialize game state
 	isRunning = true;
 	moved = false;
 	initKeys();
 	
-	Game *g = new Game("Your Name Here", D_FIELD);
+	g = new Game("Your Name Here", D_FIELD);
 	g->currentArea = new Area(.1);
 
 	// preload assets (testing)
 	//std::string img1(pngpath);
 	g->spriteSheets[0] = SDL_GL_LoadPNG("assets/images/test/1.png");
+}
 
-	Battle *b = NULL;
+void MyWindow::Destroy() {
+	Game *tmp = g;
+	g = NULL;
+	delete tmp;
 
+}
+
+void MyWindow::run() {
 	while (isRunning) {
 		// EVENTS
+		//if (cin >> buffer)
+		//	printStatus();
+
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT || 
 				 (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_q)) {
@@ -69,7 +83,7 @@ void MyWindow::Init() {
 
 			// battle!
 			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
-				b = g->randomBattle();
+				g->randomBattle();
 				g->display = DT_FIELD_BATTLE;
 			}
 		} else if (g->display == DT_FIELD_BATTLE) {
@@ -84,7 +98,7 @@ void MyWindow::Init() {
 
 		// RENDERING
 
-		render(g);
+		render();
 	}
 }
 
@@ -95,7 +109,7 @@ void MyWindow::initKeys() {
 	keys.down = false;
 }
 
-void MyWindow::render(Game *g) {
+void MyWindow::render() {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPushMatrix();
 	// TODO: change to 0,1 for depth
@@ -184,17 +198,17 @@ void MyWindow::SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w) {
   
   glBegin( GL_QUADS );
 
-      glTexCoord2i( 0, 0 );
-      glVertex3f( x, y, 0 );
+  glTexCoord2i( 0, 0 );
+  glVertex3f( x, y, 0 );
 
-      glTexCoord2i( 1, 0 );
-      glVertex3f( x+w, y, 0 );
+  glTexCoord2i( 1, 0 );
+  glVertex3f( x+w, y, 0 );
 
-      glTexCoord2i( 1, 1 );
-      glVertex3f( x+w, y+h, 0 );
+  glTexCoord2i( 1, 1 );
+  glVertex3f( x+w, y+h, 0 );
 
-      glTexCoord2i( 0, 1 );
-      glVertex3f( x, y+h, 0 );
+  glTexCoord2i( 0, 1 );
+  glVertex3f( x, y+h, 0 );
 
   glEnd();
 }
@@ -209,5 +223,19 @@ void MyWindow::toggleMusic() {
 		Mix_HaltMusic();
 		Mix_FreeMusic(music);
 		music = NULL;
+	}
+}
+
+void MyWindow::printStatus() {
+	if (!g) {
+		cerr << "no game attached to window" << endl;
+		return;
+	}
+
+	cout << "game running" << endl;
+
+	if (g->b) {
+		cout << "state: battle" << endl;
+
 	}
 }

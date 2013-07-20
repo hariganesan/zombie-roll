@@ -3,28 +3,24 @@
 
 #include "Actor.hpp"
 
-using namespace std;
-
 class View {
 	string id;
 };
 
-class Battle : public View {
+class Battle {
 	int music;
 	int background;
-public:
-	int partyCount;
-	PartyMember* party[MAX_PARTY_COUNT];
-	int enemiesCount;
-	Enemy* enemies[MAX_ENEMIES_COUNT];
 
-	Battle(int p) : enemiesCount(0) {
-		partyCount = p;
-	}
+public:
+	int enemyCount;
+	Enemy* enemies[MAX_ENEMY_COUNT];
+
+	Battle();
+	~Battle();
 
 	void addEnemy(Enemy *e) {
-		enemies[enemiesCount] = e;
-		enemiesCount++;
+		enemies[enemyCount] = e;
+		enemyCount++;
 	}
 };
 
@@ -37,14 +33,14 @@ public:
 		battlePercent = b;
 	}
 
-	int calcEnemiesCount() {return rand() % 3 + 1; };
+	int calcEnemyCount() {return rand() % 3 + 1; };
 };
 
 class Game {
 	int music;
 	int background;
 	int partyCount;
-	PartyMember** party;
+	PartyMember* party[MAX_PARTY_COUNT];
 
 public:
 	int display;
@@ -52,7 +48,12 @@ public:
 	FieldCharacter *mc;
 	Area *currentArea;
 	GLuint spriteSheets[MAX_SPRITE_SHEET_COUNT];
+	Battle *b;
 
   Game(string d, int p);
-	Battle *randomBattle();
+  ~Game();
+  void destroyArea();
+	void createBattle();
+	void destroyBattle();
+	void randomBattle();
 };

@@ -3,10 +3,7 @@
 
 #include "Elements.hpp"
 
-const int MAX_PARTY_COUNT = 4;
-const int MAX_ENEMIES_COUNT = 4;
-
-using namespace std;
+using std::string;
 
 struct Vec2d {
 	int x;
