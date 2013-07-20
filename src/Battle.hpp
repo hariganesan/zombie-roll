@@ -51,12 +51,8 @@ public:
 	int timer;
 	FieldCharacter *mc;
 	Area *currentArea;
-	GLuint png;
+	GLuint spriteSheets[MAX_SPRITE_SHEET_COUNT];
 
-	Game(string d, int p) : timer(0), currentArea(NULL) {
-		display = p;
-		mc = new FieldCharacter(d);
-	}
-
+  Game(string d, int p);
 	Battle *randomBattle();
 };

@@ -3,6 +3,98 @@
 
 #include "Render.hpp"
 
+//void MyWindow::~MyWindow() {
+//	TTF_CloseFont(font);
+//}
+
+void MyWindow::Init() {
+	// initialize game state
+	isRunning = true;
+	moved = false;
+	initKeys();
+	
+	Game *g = new Game("Your Name Here", D_FIELD);
+	g->currentArea = new Area(.1);
+
+	// preload assets (testing)
+	//std::string img1(pngpath);
+	g->spriteSheets[0] = SDL_GL_LoadPNG("assets/images/test/1.png");
+
+	Battle *b = NULL;
+
+	while (isRunning) {
+		// EVENTS
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT || 
+				 (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_q)) {
+				isRunning = false;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_m) {
+				toggleMusic();
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
+				keys.left = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
+				keys.down = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
+				keys.right = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
+				keys.up = true;
+			}
+		}
+
+		// LOGIC
+
+		if (g->display == D_FIELD) {
+			moved = false;
+			if (keys.left) {
+				if (g->mc->moveLeft()) {
+					moved = true;
+				}
+				keys.left = false;
+			} else if (keys.down) {
+				if (g->mc->moveDown()) {
+					moved = true;
+				}
+				keys.down = false;
+			} else if (keys.right) {
+				if (g->mc->moveRight()) {
+					moved = true;
+				}
+				keys.right = false;
+			} else if (keys.up) {
+				if (g->mc->moveUp()) {
+					moved = true;
+				}
+				keys.up = false;
+			}
+
+			// battle!
+			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
+				b = g->randomBattle();
+				g->display = DT_FIELD_BATTLE;
+			}
+		} else if (g->display == DT_FIELD_BATTLE) {
+			if (g->timer > TT_FIELD_BATTLE) {
+				g->timer = 0;
+				g->display = D_BATTLE;
+				glClearColor(1, 1, 1, 1); //white background
+			}
+		} else if (g->display == D_BATTLE) {
+
+		}
+
+		// RENDERING
+
+		render(g);
+	}
+}
+
+void MyWindow::initKeys() {
+	keys.right = false;
+	keys.left = false;
+	keys.up = false;
+	keys.down = false;
+}
+
 void MyWindow::render(Game *g) {
 	glClear(GL_COLOR_BUFFER_BIT);
 	glPushMatrix();
@@ -46,7 +138,7 @@ void MyWindow::render(Game *g) {
 
 	} else if (g->display == D_BATTLE) {
 		//render sample images
-		SDL_GL_RenderPNG(g->png, 100, 100, 200, 100);
+		SDL_GL_RenderPNG(g->spriteSheets[0], 100, 100, 200, 100);
 	}
 
 	////////////////
@@ -60,8 +152,8 @@ void MyWindow::render(Game *g) {
 	
 }
 
-GLuint MyWindow::SDL_GL_LoadPNG(string f) {
-	SDL_Surface *image = IMG_Load(f.c_str());
+GLuint MyWindow::SDL_GL_LoadPNG(const char *f) {
+	SDL_Surface *image = IMG_Load(f);
   if (image == NULL) {
     return -1;
   }
@@ -105,4 +197,17 @@ void MyWindow::SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w) {
       glVertex3f( x, y+h, 0 );
 
   glEnd();
+}
+
+void MyWindow::toggleMusic() {
+	if (music == NULL) {
+		music = Mix_LoadMUS("assets/music/senomar.mid");
+
+		// play infinite times
+		Mix_PlayMusic(music, -1);
+	} else {
+		Mix_HaltMusic();
+		Mix_FreeMusic(music);
+		music = NULL;
+	}
 }

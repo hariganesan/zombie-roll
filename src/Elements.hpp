@@ -10,6 +10,7 @@
 #include "SDL/SDL_opengl.h"
 #include "SDL_ttf/SDL_ttf.h"
 
+
 // window dimensions
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
@@ -65,6 +66,8 @@ const int LSBAR_INDICATOR_MP = 0;
 const int LSBAR_OVERDRIVE_BAR = 0;
 
 // SPRITE SHEETS
+
+const int MAX_SPRITE_SHEET_COUNT = 1;
 
 // CHARACTERS
 // PM = party member, EN = enemy
