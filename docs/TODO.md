@@ -1,6 +1,7 @@
 TODO
 =========
 - experience and leveling
+- damage
 - check TODOs
 - Andrew?
 - render sprites

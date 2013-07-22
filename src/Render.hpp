@@ -1,7 +1,7 @@
 // Hari Ganesan 5/13/13
 // zombie-roll: render library file
 
-#include "Battle.hpp"
+#include "Game.hpp"
 
 class MyWindow {
 private:

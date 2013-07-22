@@ -81,6 +81,12 @@ const int PM1_MAG_INIT = 0;
 const int PM1_SPE_INIT = 7;
 
 
+// LEVELING
+const int MAX_LEVEL_COUNT = 101;
+const int REQ_XP_INIT_LEVEL = 50;
+const int REQ_XP_MAX_LEVEL = 10000;
+
+
 // STATUSES
 // PM = party member, EN = enemy
 enum {

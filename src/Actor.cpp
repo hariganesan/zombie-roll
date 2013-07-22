@@ -44,3 +44,62 @@ void FightingCharacter::printStatus() {
 	cout << " M: " << magic << " S: " << speed << endl;
 
 }
+
+unsigned int FightingCharacter::getLevel() const {
+	return level;
+}
+
+unsigned int FightingCharacter::getXp() const {
+	return xp;
+}
+
+int FightingCharacter::getAttack() const {
+	return attack;
+}
+
+int FightingCharacter::getDefense() const {
+	return defense;
+}
+
+int FightingCharacter::getMagic() const {
+	return magic;
+}
+
+int FightingCharacter::getSpeed() const {
+	return speed;
+}
+
+unsigned int FightingCharacter::getTotalHP() const {
+	return totalHP;
+}
+
+unsigned int FightingCharacter::getTotalMP() const {
+	return totalMP;
+}
+
+unsigned int FightingCharacter::getRemainingHP() const {
+	return remainingHP;
+}
+
+unsigned int FightingCharacter::getRemainingMP() const {
+	return remainingMP;
+}
+
+bool FightingCharacter::takeDamage(unsigned int dmg) {
+	if (remainingHP - dmg < 0) {
+		remainingHP = 0;
+		return false;
+	}
+
+	remainingHP -= dmg;
+	return true;
+}
+
+bool FightingCharacter::useMP(int mp) {
+	if (remainingMP - mp < 0) {
+		return false;
+	}
+
+	remainingMP -= mp;
+	return true;
+}

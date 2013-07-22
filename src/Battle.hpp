@@ -3,6 +3,8 @@
 
 #include "Actor.hpp"
 
+class Game;
+
 class View {
 	string id;
 };
@@ -13,19 +15,22 @@ class Battle {
 
 public:
 	int enemyCount;
+
+	Game *g; // access to public game functions
 	Enemy *enemies[MAX_ENEMY_COUNT];
 
 	Battle();
 	~Battle();
-	void addEnemy(Enemy *e) {
-		enemies[enemyCount] = e;
-		enemyCount++;
-	}
+	void addEnemy(Enemy *e);
+	bool checkHit(const FightingCharacter& c1, const FightingCharacter& c2);
+	unsigned int calculateDamage(const FightingCharacter& c1, const FightingCharacter& c2);
+	bool attack(FightingCharacter& c1, FightingCharacter& c2, int mp);
+
 };
 
 class Area {
 public:
-	int averageEnemyLevel;
+	double averageEnemyLevel;
 	double battlePercent;
 
 	Area(double b) {
@@ -33,26 +38,4 @@ public:
 	}
 
 	int calcEnemyCount() {return rand() % 3 + 1; };
-};
-
-class Game {
-	int music;
-	int background;
-
-public:
-	int display;
-	int timer;
-	int partyCount;
-	PartyMember *party[MAX_PARTY_COUNT];
-	PartyMember *mc;
-	Area *currentArea;
-	GLuint spriteSheets[MAX_SPRITE_SHEET_COUNT];
-	Battle *b;
-
-  Game(string d, int p);
-  ~Game();
-  void destroyArea();
-	void createBattle();
-	void destroyBattle();
-	void randomBattle();
 };

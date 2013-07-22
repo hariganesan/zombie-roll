@@ -12,7 +12,7 @@ SRC=src
 all: $(SRC)/*.o zombie clean
 
 # build zombie
-zombie: zombie.o Actor.o Battle.o Render.o
+zombie: zombie.o Actor.o Battle.o Game.o Render.o
 	$(CC) -o $@ $(COCOA) $(GL) $(SDL) $^
 
 # build object files

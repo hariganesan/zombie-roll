@@ -3,6 +3,9 @@
 
 #include "Battle.hpp"
 
+using std::cout;
+using std::endl;
+
 Battle::Battle() : enemyCount(0) {
 	for (int i = 0; i < MAX_ENEMY_COUNT; i++) {
 		enemies[i] = NULL;
@@ -19,60 +22,55 @@ Battle::~Battle() {
 	}
 }
 
-Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL), b(NULL) {
-	for (int i = 0; i < MAX_PARTY_COUNT; i++) {
-		party[i] = NULL;
-	}
-
-	display = p;
-
-	// create MC
-	mc = new PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, MC_MAG_INIT, MC_SPE_INIT);
-	party[0] = mc;
+void Battle::addEnemy(Enemy *e) {
+	enemies[enemyCount] = e;
+	enemyCount++;
 }
 
-Game::~Game() {
-	destroyArea();
-	destroyBattle();
+bool Battle::checkHit(const FightingCharacter& c1, const FightingCharacter& c2) {
+	// use arctan fn
+	double hitPercent = 2/M_PI*atan(7*c1.getSpeed()/c2.getSpeed());
 
-	for (int i = 0; i < MAX_PARTY_COUNT; i++) {
-		if (party[i]) {
-			PartyMember *tmp = party[i];
-			party[i] = NULL;
-			delete tmp;
-		}
-	}
+	if (rand() % 1000 < hitPercent*1000)
+		return true;
+
+	return false;
 }
 
-void Game::destroyArea() {
-	if (currentArea) {
-		Area *tmp = currentArea;
-		currentArea = NULL;
-		delete tmp;
-	}
+unsigned int Battle::calculateDamage(const FightingCharacter& c1, const FightingCharacter& c2) {
+	int att = c1.getAttack();
+	int def = c2.getDefense();
+
+	unsigned int damage = (pow(att, 2)*15+5*rand()%att)/(def*15+5*rand()%def+20);
+
+	return damage;
 }
 
-void Game::createBattle() {
-	if (!b) {
-		b = new Battle();
-	}	else {
-		std::cerr << "Battle.cpp/57: previous battle not destroyed" << std::endl;
+// returns true if should advance to next turn
+bool Battle::attack(FightingCharacter& c1, FightingCharacter& c2, int mp) {
+	// check for MP use
+	if (!c1.useMP(mp)) {
+		cout << "insufficient MP" << endl;
+		return false;
 	}
-}
 
-void Game::destroyBattle() {
-	if (b) {
-		Battle *tmp = b;
-		b = NULL;
-		delete tmp;
+	if (!checkHit(c1, c2)) {
+		// run miss/evade sequence
+		cout << "attack missed!" << endl;
+		return true;
 	}
-}
 
-void Game::randomBattle() {
-	int enemyCount = currentArea->calcEnemyCount();
-	createBattle();
+	// subtract HP from c2
+	if (!c2.takeDamage(calculateDamage(c1, c2))) {
+		// run faint sequence
+		cout << "character fainted" << endl;
 
-	for (int i = 0; i < enemyCount; i++) {
-		b->addEnemy(new Enemy("Zombie"));
+		// if party member, check to see if all are fainted
+		// if all party fainted, run game over sequence
+		return false;
 	}
+
+	// attack successful!
+	cout << "attack hit" << endl;
+	return true;
 }

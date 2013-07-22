@@ -86,14 +86,14 @@ public:
 
 class FightingCharacter : public Character {
 	// stats
-	int level;
-	int exp;
+	unsigned int level;
+	unsigned int xp;
 	int attack;
 	int defense;
 	int magic;
 	int speed;
-	int totalHP;
-	int totalMP;
+	unsigned int totalHP;
+	unsigned int totalMP;
 
 	enum {	
 		STATUS_NORMAL,
@@ -104,16 +104,16 @@ class FightingCharacter : public Character {
 	};
 
 	// status
-	int remainingHP;
-	int remainingMP;
-	int status;
+	unsigned int remainingHP;
+	unsigned int remainingMP;
+	unsigned int status;
 
 	Weapon *equippedWeapon;
 	Armor *equippedArmor[2];
 public:
 	FightingCharacter(string d, int a, int f, int m, int s, 
-										int l = 1, int h = 25, int n = 10) : Character(d), exp(0)
-										, remainingHP(h), remainingMP(n) {
+										int l = 1, int h = 25, int n = 10) : Character(d), xp(0)
+										, remainingHP(h), remainingMP(n), status(0) {
 		level = l;
 		attack = a;
 		defense = f;
@@ -126,6 +126,21 @@ public:
 		equippedArmor[0] = NULL;
 		equippedArmor[1] = NULL;
 	}
+	
+	unsigned int getLevel() const;
+	unsigned int getXp() const;
+	int getAttack() const;
+	int getDefense() const;
+	int getMagic() const;
+	int getSpeed() const;
+	unsigned int getTotalHP() const;
+	unsigned int getTotalMP() const;
+	unsigned int getRemainingHP() const;
+	unsigned int getRemainingMP() const;
+
+	bool takeDamage(unsigned int dmg);
+	bool useMP(int mp);
+
 	void printStatus();
 };
 
