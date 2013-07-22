@@ -35,16 +35,6 @@ bool Character::moveUp() {
 	return true;
 }
 
-void FightingCharacter::printStatus() {
-	// print name, level \ hp, mp \ att, def, mag, spe
-	cout << id << ", L" << level << endl;
-	cout << "HP: " << remainingHP << "/" << totalHP;
-	cout << ", MP: " << remainingMP << "/" << totalMP << endl;
-	cout << "A: " << attack << " D: " << defense;
-	cout << " M: " << magic << " S: " << speed << endl;
-
-}
-
 unsigned int FightingCharacter::getLevel() const {
 	return level;
 }
@@ -102,4 +92,13 @@ bool FightingCharacter::useMP(int mp) {
 
 	remainingMP -= mp;
 	return true;
+}
+
+void FightingCharacter::printStatus() const {
+	// print name, level \ hp, mp \ att, def, mag, spe
+	cout << id << ", L" << level << endl;
+	cout << "HP: " << remainingHP << "/" << totalHP;
+	cout << ", MP: " << remainingMP << "/" << totalMP << endl;
+	cout << "A: " << attack << " D: " << defense;
+	cout << " M: " << magic << " S: " << speed << endl;
 }

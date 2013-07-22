@@ -141,7 +141,7 @@ public:
 	bool takeDamage(unsigned int dmg);
 	bool useMP(int mp);
 
-	void printStatus();
+	void printStatus() const;
 };
 
 class PartyMember : public FightingCharacter {

@@ -4,15 +4,11 @@
 #include "Game.hpp"
 
 Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL), b(NULL) {
-	for (int i = 0; i < MAX_PARTY_COUNT; i++) {
-		party[i] = NULL;
-	}
-
 	display = p;
 
 	// create MC
-	mc = new PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, MC_MAG_INIT, MC_SPE_INIT);
-	party[0] = mc;
+	party.push_back(PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, MC_MAG_INIT, MC_SPE_INIT));
+	mc = &party[0];
 
 	// set EXP and levels
 	setLevels();
@@ -22,12 +18,10 @@ Game::~Game() {
 	destroyArea();
 	destroyBattle();
 
-	for (int i = 0; i < MAX_PARTY_COUNT; i++) {
-		if (party[i]) {
-			PartyMember *tmp = party[i];
-			party[i] = NULL;
-			delete tmp;
-		}
+	// remove party members
+	vector<PartyMember>::iterator iter = party.begin();
+	while (iter != party.end()) {
+		iter = party.erase(iter);
 	}
 }
 
@@ -41,10 +35,11 @@ void Game::destroyArea() {
 
 void Game::createBattle() {
 	if (!b) {
-		b = new Battle();
-		b->g = this;
+		b = new Battle(this, currentArea->calcEnemyCount());
+		b->a = currentArea;
 	}	else {
 		std::cerr << "Battle.cpp/57: previous battle not destroyed" << std::endl;
+		return;
 	}
 }
 
@@ -53,15 +48,6 @@ void Game::destroyBattle() {
 		Battle *tmp = b;
 		b = NULL;
 		delete tmp;
-	}
-}
-
-void Game::randomBattle() {
-	int enemyCount = currentArea->calcEnemyCount();
-	createBattle();
-
-	for (int i = 0; i < enemyCount; i++) {
-		b->addEnemy(new Enemy("Zombie"));
 	}
 }
 

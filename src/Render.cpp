@@ -85,7 +85,7 @@ void MyWindow::run() {
 
 			// battle!
 			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
-				g->randomBattle();
+				g->createBattle();
 				g->display = DT_FIELD_BATTLE;
 			}
 		} else if (g->display == DT_FIELD_BATTLE) {
@@ -238,19 +238,20 @@ void MyWindow::printStatus() {
 	cout << "game running" << endl;
 	cout << g->partyCount << " party members" << endl;
 	
-	for (int i = 0; i < g->partyCount; i++) {
-		cout << i << ": ";
-		g->party[i]->printStatus();
+	for (vector<PartyMember>::const_iterator iter = g->party.begin(); 
+			 iter != g->party.end(); iter++) {
+		iter->printStatus();
 	}
 
 	if (g->b) {
 		cout << "state: battle" << endl;
 		cout << g->b->enemyCount << " enemies" << endl;
 		
-		for (int i = 0; i < g->b->enemyCount; i++) {
-			cout << i << ": ";
-			g->b->enemies[i]->printStatus();
+		for (vector<Enemy>::const_iterator iter = g->b->enemies.begin(); 
+				 iter != g->b->enemies.end(); iter++) {
+			iter->printStatus();
 		}
+
 	} else {
 		cout << "state: field" << endl;
 	}

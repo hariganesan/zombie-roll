@@ -12,7 +12,7 @@ public:
 	int display;
 	int timer;
 	int partyCount;
-	PartyMember *party[MAX_PARTY_COUNT];
+	vector<PartyMember> party;
 	PartyMember *mc;
 	Area *currentArea;
 	GLuint spriteSheets[MAX_SPRITE_SHEET_COUNT];

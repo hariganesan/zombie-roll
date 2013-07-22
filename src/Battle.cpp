@@ -6,25 +6,31 @@
 using std::cout;
 using std::endl;
 
-Battle::Battle() : enemyCount(0) {
-	for (int i = 0; i < MAX_ENEMY_COUNT; i++) {
-		enemies[i] = NULL;
+Battle::Battle(Game *g, int ec) : g(g), enemyCount(ec) {
+	for (int i = 0; i < ec; i++) {
+		enemies.push_back(Enemy("Zombie"));
 	}
+
+	// fill the battle queue
+	fillBQueue();
 }
 
 Battle::~Battle() {
-	for (int i = 0; i < MAX_ENEMY_COUNT; i++) {
-		if (enemies[i]) {
-			Enemy *tmp = enemies[i];
-			enemies[i] = NULL;
-			delete tmp;
-		}
+	// remove enemies
+	vector<Enemy>::iterator iter = enemies.begin();
+	while (iter != enemies.end()) {
+		iter = enemies.erase(iter);
 	}
 }
 
-void Battle::addEnemy(Enemy *e) {
-	enemies[enemyCount] = e;
-	enemyCount++;
+void Battle::fillBQueue() {
+
+	while (bQueue.size() < MAX_BQUEUE_ITEMS) {
+		// get next ctTable member at 100
+		//int highestCtSoFar = 0;
+
+		//bQueue.push_back(fc);
+	}
 }
 
 bool Battle::checkHit(const FightingCharacter& c1, const FightingCharacter& c2) {
@@ -46,7 +52,6 @@ unsigned int Battle::calculateDamage(const FightingCharacter& c1, const Fighting
 	return damage;
 }
 
-// returns true if should advance to next turn
 bool Battle::attack(FightingCharacter& c1, FightingCharacter& c2, int mp) {
 	// check for MP use
 	if (!c1.useMP(mp)) {

@@ -24,6 +24,9 @@ const int TT_FIELD_BATTLE = 75;
 
 // display options
 
+// battle queue
+const unsigned int MAX_BQUEUE_ITEMS = 8;
+
 // locations - battle screen
 // character locations
 const int LB_BOX_CHARS_X = 0;
