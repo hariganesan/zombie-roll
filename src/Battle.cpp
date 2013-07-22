@@ -6,13 +6,15 @@
 using std::cout;
 using std::endl;
 
-Battle::Battle(Game *g, int ec) : g(g), enemyCount(ec) {
+Battle::Battle(int ec) : enemyCount(ec) {
 	for (int i = 0; i < ec; i++) {
 		enemies.push_back(Enemy("Zombie"));
 	}
 
 	// fill the battle queue
-	fillBQueue();
+	while (bQueue.size() < MAX_BQUEUE_ITEMS) {
+		bQueuePush();
+	}
 }
 
 Battle::~Battle() {
@@ -23,13 +25,61 @@ Battle::~Battle() {
 	}
 }
 
-void Battle::fillBQueue() {
+void Battle::bQueuePush() {
+	if (bQueue.size() > MAX_BQUEUE_ITEMS) {
+		std::cerr << "Battle.cpp/30: bQueue overflow" << std::endl;
+	}
 
-	while (bQueue.size() < MAX_BQUEUE_ITEMS) {
-		// get next ctTable member at 100
-		//int highestCtSoFar = 0;
+	// get next ctTable member at 100
+	unsigned int lowestCyclesNeeded = MAX_CYCLE;
 
-		//bQueue.push_back(fc);
+	// cycle through both party and enemies
+	for (vector<PartyMember>::const_iterator iter = party.begin();
+			 iter != party.end(); iter++) {
+		if ((MAX_CYCLE-iter->getCT())/iter->getSpeed()*SPEED_CONSTANT < lowestCyclesNeeded) {
+			lowestCyclesNeeded = (MAX_CYCLE-iter->getCT())/iter->getSpeed()*SPEED_CONSTANT;
+		}
+	}
+	for (vector<Enemy>::const_iterator iter = enemies.begin();
+			 iter != enemies.end(); iter++) {
+		if ((MAX_CYCLE-iter->getCT())/iter->getSpeed()*SPEED_CONSTANT < lowestCyclesNeeded) {
+			lowestCyclesNeeded = (MAX_CYCLE-iter->getCT())/iter->getSpeed()*SPEED_CONSTANT;
+		}
+	}
+
+	// edit ct values
+	for (vector<PartyMember>::iterator iter = party.begin();
+			 iter != party.end(); iter++) {
+		iter->setCT(iter->getCT()+iter->getSpeed()*SPEED_CONSTANT*lowestCyclesNeeded);
+	}
+	for (vector<Enemy>::iterator iter = enemies.begin();
+			 iter != enemies.end(); iter++) {
+		iter->setCT(iter->getCT()+iter->getSpeed()*SPEED_CONSTANT*lowestCyclesNeeded);
+	}
+
+	// push back character with lowest attack
+	FightingCharacter *fc = NULL;
+	for (vector<PartyMember>::iterator iter = party.begin();
+			 iter != party.end(); iter++) {
+		if (iter->getCT() == 100) {
+			if (!fc || iter->getAttack() > fc->getAttack()) {
+				fc = &(*iter);
+			}
+		}
+	}
+	for (vector<Enemy>::iterator iter = enemies.begin();
+			 iter != enemies.end(); iter++) {
+		if (iter->getCT() == 100) {
+			if (!fc || iter->getAttack() > fc->getAttack()) {
+				fc = &(*iter);
+			}
+		}
+	}
+
+	if (fc) {
+		bQueue.push_back(*fc);
+	} else {
+		std::cerr << "Battle.cpp/70: no FC pushed to queue" << std::endl;
 	}
 }
 

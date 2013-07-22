@@ -35,12 +35,13 @@ public:
 	Area *a; // access to public area members
 
 	int enemyCount;
+	vector<PartyMember> party; // party list copied from game
 	vector<Enemy> enemies; // enemy list
 	list<FightingCharacter> bQueue;// battle queue
 
-	Battle(Game *g, int ec);
+	Battle(int ec);
 	~Battle();
-	void fillBQueue();
+	void bQueuePush();
 	bool checkHit(const FightingCharacter& c1, const FightingCharacter& c2);
 	unsigned int calculateDamage(const FightingCharacter& c1, const FightingCharacter& c2);
 	// returns true if should advance to next turn

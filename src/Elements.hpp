@@ -26,6 +26,8 @@ const int TT_FIELD_BATTLE = 75;
 
 // battle queue
 const unsigned int MAX_BQUEUE_ITEMS = 8;
+const unsigned int MAX_CYCLE = 100;
+const double SPEED_CONSTANT = 1.0;
 
 // locations - battle screen
 // character locations

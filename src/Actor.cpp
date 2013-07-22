@@ -75,6 +75,10 @@ unsigned int FightingCharacter::getRemainingMP() const {
 	return remainingMP;
 }
 
+unsigned int FightingCharacter::getCT() const {
+	return ct;
+}
+
 bool FightingCharacter::takeDamage(unsigned int dmg) {
 	if (remainingHP - dmg < 0) {
 		remainingHP = 0;
@@ -91,6 +95,16 @@ bool FightingCharacter::useMP(int mp) {
 	}
 
 	remainingMP -= mp;
+	return true;
+}
+
+bool FightingCharacter::setCT(int newCT) {
+	if (newCT < 0 || newCT > 100) {
+		std::cerr << "Actor.cpp/105: ct out of bounds" << std::endl;
+		return false;
+	}
+
+	ct = (unsigned) newCT;
 	return true;
 }
 

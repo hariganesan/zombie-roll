@@ -107,13 +107,14 @@ class FightingCharacter : public Character {
 	unsigned int remainingHP;
 	unsigned int remainingMP;
 	unsigned int status;
+	unsigned int ct;
 
 	Weapon *equippedWeapon;
 	Armor *equippedArmor[2];
 public:
 	FightingCharacter(string d, int a, int f, int m, int s, 
 										int l = 1, int h = 25, int n = 10) : Character(d), xp(0)
-										, remainingHP(h), remainingMP(n), status(0) {
+										, remainingHP(h), remainingMP(n), status(0), ct(0) {
 		level = l;
 		attack = a;
 		defense = f;
@@ -137,9 +138,11 @@ public:
 	unsigned int getTotalMP() const;
 	unsigned int getRemainingHP() const;
 	unsigned int getRemainingMP() const;
+	unsigned int getCT() const;
 
 	bool takeDamage(unsigned int dmg);
 	bool useMP(int mp);
+	bool setCT(int newCT);
 
 	void printStatus() const;
 };

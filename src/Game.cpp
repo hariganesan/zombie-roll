@@ -35,8 +35,9 @@ void Game::destroyArea() {
 
 void Game::createBattle() {
 	if (!b) {
-		b = new Battle(this, currentArea->calcEnemyCount());
+		b = new Battle(currentArea->calcEnemyCount());
 		b->a = currentArea;
+		b->party = party; // TODO: check vector copying - change to explicit?
 	}	else {
 		std::cerr << "Battle.cpp/57: previous battle not destroyed" << std::endl;
 		return;
