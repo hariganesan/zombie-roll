@@ -9,13 +9,12 @@ class Game {
 	unsigned int requiredXP[MAX_LEVEL_COUNT];
 
 public:
-	int display;
-	int timer;
-	int partyCount;
+	int display; // used for game logic
+	int timer; // used for transitions
+	int partyCount; // delete? could use party.size()
 	vector<PartyMember> party;
 	PartyMember *mc;
 	Area *currentArea;
-	GLuint spriteSheets[MAX_SPRITE_SHEET_COUNT];
 	Battle *b;
 
   Game(string d, int p);
@@ -23,6 +22,5 @@ public:
   void destroyArea();
 	void createBattle();
 	void destroyBattle();
-	void randomBattle();
 	void setLevels();
 };

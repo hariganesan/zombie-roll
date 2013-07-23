@@ -34,7 +34,7 @@ public:
 	Game *g; // access to public game members (party, etc.)
 	Area *a; // access to public area members
 
-	int enemyCount;
+	int enemyCount; // TODO: delete? could use enemy.size()
 	vector<PartyMember> party; // party list copied from game
 	vector<Enemy> enemies; // enemy list
 	list<FightingCharacter> bQueue;// battle queue
@@ -43,7 +43,8 @@ public:
 	~Battle();
 	void bQueuePush();
 	bool checkHit(const FightingCharacter& c1, const FightingCharacter& c2);
-	unsigned int calculateDamage(const FightingCharacter& c1, const FightingCharacter& c2);
+	unsigned int calculateDamage(const FightingCharacter& c1, 
+															 const FightingCharacter& c2);
 	// returns true if should advance to next turn
 	bool attack(FightingCharacter& c1, FightingCharacter& c2, int mp);
 

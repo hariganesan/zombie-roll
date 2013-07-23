@@ -2,33 +2,51 @@
 // zombie-roll: render library file
 
 #include "Game.hpp"
+#include "SDL/SDL.h"
+#include "SDL/SDL_mixer.h"
+#include "SDL/SDL_image.h"
+#include "SDL_ttf/SDL_ttf.h"
+//#include "SDL/SDL_opengl.h"
+
+using std::cin;					using std::cout;
+using std::cerr;				using std::endl;
+using std::string;
 
 class MyWindow {
 private:
-	SDL_Event event;
+	SDL_Surface *screen; // main window
+	SDL_Event event; // log events
+	Keys keys; // used with events
 
 	// game state
 	Game *g;
 	bool isRunning;
 	bool moved;
-
-	// font
 	TTF_Font *font;
-	// music
 	Mix_Music *music;
-	//keys
-	Keys keys;
+	SDL_Surface *spriteSheets[MAX_SPRITE_SHEET_COUNT];
 
+	// init/destroy fns
 	void Init();
 	void Destroy();
 	void initKeys();
-	void render();
-	GLuint SDL_GL_LoadPNG(const char *f);
-	void SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w);
+	
+	// deprecated openGL fns
+	//void renderGL();
+	//GLuint SDL_GL_LoadPNG(const char *f);
+	//void SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w);
+	
+	// dealing with assets
+	SDL_Surface *loadImage(string filename);
+	void applySurface(int x, int y, SDL_Surface* source, 
+										SDL_Surface* destination, SDL_Rect* clip = NULL);
 	void toggleMusic();
+
+	// debugging
 	void printStatus();
 
 public:
+	// fns used by main routine
 	MyWindow() : font(NULL), music(NULL) { Init(); };
 	~MyWindow() { Destroy(); };
 	void run();

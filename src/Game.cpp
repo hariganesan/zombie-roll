@@ -3,11 +3,13 @@
 
 #include "Game.hpp"
 
-Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL), b(NULL) {
+Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL)
+				 , b(NULL) {
 	display = p;
 
 	// create MC
-	party.push_back(PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, MC_MAG_INIT, MC_SPE_INIT));
+	party.push_back(PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, 
+															MC_MAG_INIT, MC_SPE_INIT));
 	mc = &party[0];
 
 	// set EXP and levels
@@ -53,8 +55,8 @@ void Game::destroyBattle() {
 }
 
 void Game::setLevels() {
-	double B = log((double)REQ_XP_MAX_LEVEL/REQ_XP_INIT_LEVEL)/(MAX_LEVEL_COUNT-2);
-	double A = (double)REQ_XP_INIT_LEVEL/(exp(B)-1.0);
+	double B=log((double)REQ_XP_MAX_LEVEL/REQ_XP_INIT_LEVEL)/(MAX_LEVEL_COUNT-2);
+	double A=(double)REQ_XP_INIT_LEVEL/(exp(B)-1.0);
 
 	for (int i = 0; i < MAX_LEVEL_COUNT; i++) {
 		requiredXP[i] = round(A*(exp(B*(i-1))-1));

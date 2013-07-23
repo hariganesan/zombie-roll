@@ -1,23 +1,20 @@
 // Hari Ganesan 3/21/13
 // zombie-roll: elements
 
-#include <iostream>
-#include <string>
-#include <math.h>
-#include "SDL/SDL.h"
-#include "SDL/SDL_mixer.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_opengl.h"
-#include "SDL_ttf/SDL_ttf.h"
-
 // window dimensions
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
 const int MARGIN = 10;
 
+// other window properties
 const int SDL_FRAME_RATE = 30;
 const int F_BOX_DIM = 20; // field box dimension
 const double FIELD_COLOR = 0.3;
+
+// audio properties
+const int AUDIO_RATE = 22050;
+const int AUDIO_CHANNELS = 2;
+const int AUDIO_BUFFERS = 4096;
 
 // transition time
 const int TT_FIELD_BATTLE = 75;
@@ -75,16 +72,30 @@ const int MAX_SPRITE_SHEET_COUNT = 1;
 const int MAX_PARTY_COUNT = 4;
 const int MAX_ENEMY_COUNT = 4;
 
+// PARTY BASE STATS
+// MC (warrior)
 const int MC_ATT_INIT = 4;
 const int MC_DEF_INIT = 7;
 const int MC_MAG_INIT = 0;
 const int MC_SPE_INIT = 4;
 
+// PM1 (thief)
 const int PM1_ATT_INIT = 4;
 const int PM1_DEF_INIT = 4;
 const int PM1_MAG_INIT = 0;
 const int PM1_SPE_INIT = 7;
 
+// PM2 (white mage)
+const int PM2_ATT_INIT = 1;
+const int PM2_DEF_INIT = 3;
+const int PM2_MAG_INIT = 8;
+const int PM2_SPE_INIT = 3;
+
+// PM3 (black mage)
+const int PM3_ATT_INIT = 2;
+const int PM3_DEF_INIT = 2;
+const int PM3_MAG_INIT = 8;
+const int PM3_SPE_INIT = 3;
 
 // LEVELING
 const int MAX_LEVEL_COUNT = 101;
@@ -122,10 +133,6 @@ enum {
 	SB_DRUNK,
 	SB_OVERDRIVE
 };
-
-// ATB system
-//
-
 
 // DISPLAYS
 enum {

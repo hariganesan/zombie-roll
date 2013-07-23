@@ -83,7 +83,8 @@ void Battle::bQueuePush() {
 	}
 }
 
-bool Battle::checkHit(const FightingCharacter& c1, const FightingCharacter& c2) {
+bool Battle::checkHit(const FightingCharacter& c1, 
+											const FightingCharacter& c2) {
 	// use arctan fn
 	double hitPercent = 2/M_PI*atan(7*c1.getSpeed()/c2.getSpeed());
 
@@ -93,7 +94,8 @@ bool Battle::checkHit(const FightingCharacter& c1, const FightingCharacter& c2) 
 	return false;
 }
 
-unsigned int Battle::calculateDamage(const FightingCharacter& c1, const FightingCharacter& c2) {
+unsigned int Battle::calculateDamage(const FightingCharacter& c1, 
+																		 const FightingCharacter& c2) {
 	int att = c1.getAttack();
 	int def = c2.getDefense();
 

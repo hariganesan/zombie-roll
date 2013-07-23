@@ -2,6 +2,9 @@
 // zombie-roll: actor library file
 
 #include "Elements.hpp"
+#include <iostream>
+#include <string>
+#include <cmath>
 
 using std::string;
 

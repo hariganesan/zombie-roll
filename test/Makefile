@@ -5,6 +5,8 @@
 CC=g++
 CFLAGS=-pedantic -Wall
 
+all: test clean
+
 test: test.o
 	$(CC) -o $@ $^
 

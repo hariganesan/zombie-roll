@@ -3,16 +3,16 @@
 
 # compiler options
 CC=g++
-CFLAGS=-pedantic -Wall -I/sw/include -L/sw/lib
-SDL=-lSDLmain -lSDL -lSDL_ttf -lSDL_mixer -lSDL_image
+CFLAGS=-pedantic -Wall -I/sw/include
+SDL=-L/sw/lib -lSDLmain -lSDL -lSDL_ttf -lSDL_mixer -lSDL_image
 COCOA=-framework Cocoa
-GL=-framework OpenGL -L/sw/lib
+#GL=-framework OpenGL
 SRC=src
 
 all: $(SRC)/*.o zombie clean
 
 # build zombie
-zombie: zombie.o Actor.o Battle.o Game.o Render.o
+zombie: zombie.o Actor.o Battle.o Game.o Render.o Sprites.o
 	$(CC) -o $@ $(COCOA) $(GL) $(SDL) $^
 
 # build object files
