@@ -3,9 +3,6 @@
 
 #include "Actor.hpp"
 
-using std::cout;
-using std::endl;
-
 // TODO: add objects/borders so that returns false
 bool Character::moveLeft() {
 	x -= F_BOX_DIM;

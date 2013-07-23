@@ -3,9 +3,6 @@
 
 #include "Battle.hpp"
 
-using std::cout;
-using std::endl;
-
 Battle::Battle(int ec) : enemyCount(ec) {
 	for (int i = 0; i < ec; i++) {
 		enemies.push_back(Enemy("Zombie"));
@@ -27,7 +24,7 @@ Battle::~Battle() {
 
 void Battle::bQueuePush() {
 	if (bQueue.size() > MAX_BQUEUE_ITEMS) {
-		std::cerr << "Battle.cpp/30: bQueue overflow" << std::endl;
+		cerr << "Battle.cpp/30: bQueue overflow" << endl;
 	}
 
 	// get next ctTable member at 100
@@ -79,7 +76,7 @@ void Battle::bQueuePush() {
 	if (fc) {
 		bQueue.push_back(*fc);
 	} else {
-		std::cerr << "Battle.cpp/70: no FC pushed to queue" << std::endl;
+		cerr << "Battle.cpp/70: no FC pushed to queue" << endl;
 	}
 }
 

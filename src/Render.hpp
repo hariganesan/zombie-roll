@@ -8,10 +8,6 @@
 #include "SDL_ttf/SDL_ttf.h"
 //#include "SDL/SDL_opengl.h"
 
-using std::cin;					using std::cout;
-using std::cerr;				using std::endl;
-using std::string;
-
 class MyWindow {
 private:
 	SDL_Surface *screen; // main window

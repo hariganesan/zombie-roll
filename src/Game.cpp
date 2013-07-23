@@ -41,7 +41,7 @@ void Game::createBattle() {
 		b->a = currentArea;
 		b->party = party; // TODO: check vector copying - change to explicit?
 	}	else {
-		std::cerr << "Battle.cpp/57: previous battle not destroyed" << std::endl;
+		cerr << "Battle.cpp/57: previous battle not destroyed" << endl;
 		return;
 	}
 }
