@@ -58,7 +58,7 @@ void Game::setLevels() {
 	double B=log((double)REQ_XP_MAX_LEVEL/REQ_XP_INIT_LEVEL)/(MAX_LEVEL_COUNT-2);
 	double A=(double)REQ_XP_INIT_LEVEL/(exp(B)-1.0);
 
-	for (int i = 0; i < MAX_LEVEL_COUNT; i++) {
+	for (unsigned int i = 0; i < MAX_LEVEL_COUNT; i++) {
 		requiredXP[i] = round(A*(exp(B*(i-1))-1));
 	}
 }

@@ -18,7 +18,7 @@ private:
 	Game *g;
 	bool isRunning;
 	bool moved;
-	TTF_Font *font;
+	TTF_Font *font12;
 	Mix_Music *music;
 	SDL_Surface *spriteSheets[MAX_SPRITE_SHEET_COUNT];
 
@@ -38,12 +38,15 @@ private:
 										SDL_Surface* destination, SDL_Rect* clip = NULL);
 	void toggleMusic();
 
+	// testing
+	void pushDots();
+
 	// debugging
 	void printStatus();
 
 public:
 	// fns used by main routine
-	MyWindow() : font(NULL), music(NULL) { Init(); };
+	MyWindow() : screen(NULL), g(NULL), font12(NULL), music(NULL) { Init(); };
 	~MyWindow() { Destroy(); };
 	void run();
 };

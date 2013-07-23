@@ -3,24 +3,18 @@
 
 #include "Render.hpp"
 
-//void MyWindow::~MyWindow() {
-//	TTF_CloseFont(font);
-//}
-
 void MyWindow::Init() {
-	screen = NULL; // main window
-
 	// initialize window properties
 	if (!(screen = SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32, 
 																	SDL_SWSURFACE))) {
 		cerr << "unable to set up window" << endl;	
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	SDL_WM_SetCaption("Zombie Roll", NULL);
 
 	// preload assets (testing)
-	for (int i = 0; i < MAX_SPRITE_SHEET_COUNT; i++) {
+	for (unsigned int i = 0; i < MAX_SPRITE_SHEET_COUNT; i++) {
 		spriteSheets[i] = NULL;
 	}
 
@@ -35,8 +29,17 @@ void MyWindow::Init() {
 	initKeys();
   //toggleMusic();
 
+  // open font
+  if (!(font12 = TTF_OpenFont("assets/fonts/chintzy.ttf", 12))) {
+  	cerr << "unable to open font" << endl;
+  	exit(EXIT_FAILURE);
+  }
+
 	g = new Game("Hari", D_FIELD);
 	g->currentArea = new Area(.1);
+
+	// test image
+	pushDots();
 }
 
 void MyWindow::Destroy() {
@@ -44,8 +47,10 @@ void MyWindow::Destroy() {
 	g = NULL;
 	delete tmpG;
 
+	TTF_CloseFont(font12);
+
 	// free assets
-	for (int i = 0; i < MAX_SPRITE_SHEET_COUNT; i++) {
+	for (unsigned int i = 0; i < MAX_SPRITE_SHEET_COUNT; i++) {
 		if (spriteSheets[i]) {
 			SDL_Surface *tmpS = spriteSheets[i];
 			spriteSheets[i] = NULL;
@@ -131,19 +136,6 @@ void MyWindow::initKeys() {
 	keys.left = false;
 	keys.up = false;
 	keys.down = false;
-}
-
-void MyWindow::toggleMusic() {
-	if (music == NULL) {
-		music = Mix_LoadMUS("assets/music/senomar.mid");
-
-		// play infinite times
-		Mix_PlayMusic(music, -1);
-	} else {
-		Mix_HaltMusic();
-		Mix_FreeMusic(music);
-		music = NULL;
-	}
 }
 
 void MyWindow::printStatus() {

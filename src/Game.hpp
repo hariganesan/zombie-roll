@@ -4,14 +4,14 @@
 #include "Battle.hpp"
 
 class Game {
-	int music;
-	int background;
+	unsigned int music;
+	unsigned int background;
 	unsigned int requiredXP[MAX_LEVEL_COUNT];
 
 public:
-	int display; // used for game logic
-	int timer; // used for transitions
-	int partyCount; // delete? could use party.size()
+	unsigned int display; // used for game logic
+	unsigned int timer; // used for transitions
+	unsigned int partyCount; // delete? could use party.size()
 	vector<PartyMember> party;
 	PartyMember *mc;
 	Area *currentArea;

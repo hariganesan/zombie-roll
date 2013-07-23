@@ -23,18 +23,18 @@ public:
 		battlePercent = b;
 	}
 
-	int calcEnemyCount() {return rand() % 3 + 1; };
+	unsigned int calcEnemyCount() {return rand() % 3 + 1; };
 };
 
 class Battle {
-	int music;
-	int background;
+	unsigned int music;
+	unsigned int background;
 
 public:
 	Game *g; // access to public game members (party, etc.)
 	Area *a; // access to public area members
 
-	int enemyCount; // TODO: delete? could use enemy.size()
+	unsigned int enemyCount; // TODO: delete? could use enemy.size()
 	vector<PartyMember> party; // party list copied from game
 	vector<Enemy> enemies; // enemy list
 	list<FightingCharacter> bQueue;// battle queue
