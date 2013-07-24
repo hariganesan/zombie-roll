@@ -4,28 +4,55 @@
 #include "Window.hpp"
 
 void MyWindow::handleEvent(SDL_Event e) {
-	if (event.type == SDL_QUIT || 
-		 (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_q)) {
+	// MAIN FNS
+
+	if (e.type == SDL_QUIT || 
+		 (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_q)) {
 		isRunning = false;
-	} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_p) {
-		printStatus();
-	} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_m) {
-		toggleMusic();
-	} else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_LEFT) {
-		keys.left = true;
-	} else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DOWN) {
-		keys.down = true;
-	} else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_RIGHT) {
-		keys.right = true;
-	} else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_UP) {
-		keys.up = true;
-	} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
-		keys.left = false;
-	} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
-		keys.down = false;
-	} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
-		keys.right = false;
-	} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
-		keys.up = false;
+	} else if (e.type == SDL_KEYUP) {
+		switch(e.key.keysym.sym) { 
+			case SDLK_p: printStatus(); break;
+			case SDLK_m: toggleMusic(); break;
+			case SDLK_i: //toggleInventory(); break;// TODO: implement method
+			default: break;
+		}
+	}
+
+	// MOVEMENT
+
+	if (e.type == SDL_KEYDOWN) {
+		switch(e.key.keysym.sym) {
+			case SDLK_a:
+			case SDLK_LEFT: keys.left = true; break;
+			case SDLK_s:
+			case SDLK_DOWN: keys.down = true; break;
+			case SDLK_d:
+			case SDLK_RIGHT: keys.right = true; break;
+			case SDLK_w:
+			case SDLK_UP: keys.up = true; break;
+			default: break;
+		}
+	} else if (e.type == SDL_KEYUP) {
+		switch(e.key.keysym.sym) {
+			case SDLK_a:
+			case SDLK_LEFT: keys.left = false; break;
+			case SDLK_s:
+			case SDLK_DOWN: keys.down = false; break;
+			case SDLK_d:
+			case SDLK_RIGHT: keys.right = false; break;
+			case SDLK_w:
+			case SDLK_UP: keys.up = false; break;
+			default: break;
+		}
+	}
+
+	// MOUSE CLICKS
+
+	if (e.type == SDL_MOUSEBUTTONDOWN) {
+		if (event.button.button == 1) { // LEFT MOUSE CLICK
+			cout << "(" << event.button.x << "," << event.button.y << ")" << endl;
+		} else if (event.button.button == 3) { // RIGHT MOUSE CLICK
+			cout << "(" << event.button.x << "," << event.button.y << ")" << endl;
+		}
 	}
 }

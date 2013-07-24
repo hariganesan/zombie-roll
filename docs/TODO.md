@@ -2,8 +2,6 @@ TODO
 =========
 - preloaded/dynamic text
 - change music
-- split up events and logic
-- reorder file hierarchy
 - draw sprites - Andrew?
 - make battle screen
 - resource manager?
@@ -17,3 +15,5 @@ Finished
 - battle queue
 - remove openGL
 - render sprites
+- split up events and logic
+- reorder file hierarchy
