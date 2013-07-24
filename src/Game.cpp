@@ -3,8 +3,7 @@
 
 #include "Game.hpp"
 
-Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL)
-				 , b(NULL) {
+Game::Game(string d, int p) : timer(0), currentArea(NULL), b(NULL) {
 	display = p;
 
 	// create MC

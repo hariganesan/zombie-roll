@@ -96,7 +96,7 @@ void MyWindow::printStatus() {
 
 	cout << "------------" << endl;
 	cout << "game running" << endl;
-	cout << g->partyCount << " party members" << endl;
+	cout << g->party.size() << " party members" << endl;
 	
 	for (vector<PartyMember>::const_iterator iter = g->party.begin(); 
 			 iter != g->party.end(); iter++) {

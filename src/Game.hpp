@@ -11,7 +11,6 @@ class Game {
 public:
 	unsigned int display; // used for game logic
 	unsigned int timer; // used for transitions
-	unsigned int partyCount; // delete? could use party.size()
 	vector<PartyMember> party;
 	PartyMember *mc;
 	Area *currentArea;
