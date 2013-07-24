@@ -1,13 +1,16 @@
 TODO
 =========
-- experience and leveling
-- damage
+- reorder file hierarchy
 - check TODOs
 - Andrew?
 - render sprites
 - make battle screen
-- resource manager
+- resource manager?
 
 Finished
 ----------
 - PNG transparency
+- experience and leveling
+- damage
+- battle queue
+- remove openGL

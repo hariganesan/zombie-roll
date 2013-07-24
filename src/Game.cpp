@@ -11,6 +11,9 @@ Game::Game(string d, int p) : timer(0), partyCount(1), currentArea(NULL)
 	party.push_back(PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, 
 															MC_MAG_INIT, MC_SPE_INIT));
 	mc = &party[0];
+	mc->setPosition(200, 200);
+	mc->setSpriteRowCount(2);
+	mc->setSpriteColCount(2);
 
 	// set EXP and levels
 	setLevels();

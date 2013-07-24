@@ -5,31 +5,55 @@
 
 // TODO: add objects/borders so that returns false
 bool Character::moveLeft() {
-	x -= F_BOX_DIM;
-	orig_x = x;
+	if ((pos.x -= F_BOX_DIM) < 0)
+		pos.x = 0;
 
+	sprite = SPRITE_LEFT;
 	return true;
 }
 
 bool Character::moveDown() {
-	y += F_BOX_DIM;
-	orig_y = y;
+	if ((pos.y += F_BOX_DIM) > (signed) (WINDOW_HEIGHT - SPRITE_HEIGHT))
+		pos.y -= F_BOX_DIM;
 
+	sprite = SPRITE_DOWN;
 	return true;
 }
 
 bool Character::moveRight() {
-	x += F_BOX_DIM;
-	orig_x = x;
+	if ((pos.x += F_BOX_DIM) > (signed) (WINDOW_WIDTH - SPRITE_WIDTH))
+		pos.x -= F_BOX_DIM;
 
+	sprite = SPRITE_RIGHT;
 	return true;
 }
 
 bool Character::moveUp() {
-	y -= F_BOX_DIM;
-	orig_y = y;
+	if ((pos.y -= F_BOX_DIM) < 0)
+		pos.y = 0;
 
+	sprite = SPRITE_UP;
 	return true;
+}
+
+unsigned int Character::getSprite() const {
+	return sprite;
+}
+
+unsigned int Character::getSpriteRowCount() const {
+	return spriteRowCount;
+}
+
+void Character::setSpriteRowCount(unsigned int s) {
+	spriteRowCount = s;
+}
+
+unsigned int Character::getSpriteColCount() const {
+	return spriteColCount;
+}
+
+void Character::setSpriteColCount(unsigned int s) {
+	spriteColCount = s;
 }
 
 unsigned int FightingCharacter::getLevel() const {

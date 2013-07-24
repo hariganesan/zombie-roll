@@ -18,10 +18,12 @@ struct Vec2d {
 class Actor {
 protected:
 	string id;
-	Vec2d position;
+	Vec2d pos;
 
 public:
 	Actor(string d) : id(d) {};
+	void setPosition(int x, int y) {pos.x = x; pos.y = y;};
+	Vec2d getPosition() const {return pos;};
 };
 
 class RenderableActor : public Actor {
@@ -73,20 +75,29 @@ public:
 };
 
 class Character : public RenderableActor {
-	int sprite;
+	unsigned int sprite;
+	unsigned int spriteCount;
+	unsigned int spriteRowCount;
+	unsigned int spriteColCount;
+
+	enum {
+		SPRITE_DOWN,
+		SPRITE_LEFT,
+		SPRITE_RIGHT,
+		SPRITE_UP
+	};
 
 public:
-	// position in field
-	int orig_x;
-	int orig_y;
-	int x;
-	int y;
-
-	Character(string d) : RenderableActor(d), orig_x(0), orig_y(0), x(0), y(0) {};
+	Character(string d) : RenderableActor(d), sprite(SPRITE_RIGHT) {};
 	bool moveLeft(); // returns true if moved
 	bool moveDown();
 	bool moveRight();
 	bool moveUp();
+	unsigned int getSprite() const;
+	unsigned int getSpriteRowCount() const;
+	void setSpriteRowCount(unsigned int s);
+	unsigned int getSpriteColCount() const;
+	void setSpriteColCount(unsigned int s);
 };
 
 class FightingCharacter : public Character {

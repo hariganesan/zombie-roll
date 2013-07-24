@@ -39,7 +39,15 @@ void MyWindow::Init() {
 	g->currentArea = new Area(.1);
 
 	// test image
-	pushDots();
+	spriteSheets[0] = loadImage("../../Desktop/dots.png");
+	//pushDots();
+
+	// debugging
+	//Vec2d mcPos = g->mc->getPosition();
+	//cout << mcPos.x << ", " << mcPos.y << endl;
+	//cout << g->mc->getSprite() << endl;
+	//cout << g->mc->getSpriteRowCount() << endl;
+
 }
 
 void MyWindow::Destroy() {
@@ -128,6 +136,7 @@ void MyWindow::run() {
 		// RENDERING
 
 		//renderGL();
+		renderSDL();
 	}
 }
 

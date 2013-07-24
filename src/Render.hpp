@@ -31,6 +31,7 @@ private:
 	//void renderGL();
 	//GLuint SDL_GL_LoadPNG(const char *f);
 	//void SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w);
+	void renderSDL();
 	
 	// dealing with assets
 	SDL_Surface *loadImage(string filename);
