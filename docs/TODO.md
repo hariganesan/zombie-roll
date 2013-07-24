@@ -1,11 +1,13 @@
 TODO
 =========
+- preloaded/dynamic text
+- change music
+- split up events and logic
 - reorder file hierarchy
-- check TODOs
-- Andrew?
-- render sprites
+- draw sprites - Andrew?
 - make battle screen
 - resource manager?
+- check TODOs
 
 Finished
 ----------
@@ -14,3 +16,4 @@ Finished
 - damage
 - battle queue
 - remove openGL
+- render sprites

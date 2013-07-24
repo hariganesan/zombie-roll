@@ -1,7 +1,7 @@
 // Hari Ganesan 5/13/13
-// zombie-roll: render library file
+// zombie-roll: window library file
 
-#include "Game.hpp"
+#include "../Game.hpp"
 #include "SDL/SDL.h"
 #include "SDL/SDL_mixer.h"
 #include "SDL/SDL_image.h"
@@ -31,15 +31,19 @@ private:
 	//void renderGL();
 	//GLuint SDL_GL_LoadPNG(const char *f);
 	//void SDL_GL_RenderPNG(GLuint object, int x, int y, int h, int w);
+
+	// main loop: events, logic, rendering
+	void handleEvent(SDL_Event e);
+	void performLogic();
 	void renderSDL();
-	
+
 	// dealing with assets
 	SDL_Surface *loadImage(string filename);
 	void applySurface(int x, int y, SDL_Surface* source, 
 										SDL_Surface* destination, SDL_Rect* clip = NULL);
 	void toggleMusic();
 
-	// testing
+	// testing/reference
 	void pushDots();
 
 	// debugging

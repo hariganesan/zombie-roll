@@ -3,7 +3,7 @@
 
 #include "Battle.hpp"
 
-Battle::Battle(int ec) : enemyCount(ec) {
+Battle::Battle(int ec) {
 	for (int i = 0; i < ec; i++) {
 		enemies.push_back(Enemy("Zombie"));
 	}

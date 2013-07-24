@@ -8,7 +8,7 @@ const unsigned int MARGIN = 10;
 
 // other window properties
 const unsigned int SDL_FRAME_RATE = 30;
-const unsigned int F_BOX_DIM = 20; // field box dimension
+const unsigned int F_BOX_DIM = 5; // field box dimension
 const double FIELD_COLOR = 0.3;
 
 // audio properties

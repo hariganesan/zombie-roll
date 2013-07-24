@@ -34,7 +34,6 @@ public:
 	Game *g; // access to public game members (party, etc.)
 	Area *a; // access to public area members
 
-	unsigned int enemyCount; // TODO: delete? could use enemy.size()
 	vector<PartyMember> party; // party list copied from game
 	vector<Enemy> enemies; // enemy list
 	list<FightingCharacter> bQueue;// battle queue

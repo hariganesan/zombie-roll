@@ -1,7 +1,7 @@
 // Hari Ganesan 7/22/13
 // zombie-roll: loading and rendering assets
 
-#include "Render.hpp"
+#include "Window.hpp"
 
 SDL_Surface *MyWindow::loadImage(string filename) {
 	SDL_Surface *loadedImage = NULL;

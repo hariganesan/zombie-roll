@@ -1,7 +1,7 @@
 // Hari Ganesan 2/4/13
 // zombie-roll: an rpg
 
-#include "Render.hpp"
+#include "Window.hpp"
 
 //const char *musicpath = "assets/music/senomar.mid";
 //const char *pngpath = "assets/images/test/";
@@ -17,8 +17,8 @@ int main(int argc, char **argv) {
 
 	if (Mix_OpenAudio(AUDIO_RATE, AUDIO_S16, 
 										AUDIO_CHANNELS, AUDIO_BUFFERS) == -1) {
-    return EXIT_FAILURE;
-  }
+		return EXIT_FAILURE;
+	}
 
 	// deprecated openGL fns
 	//SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
@@ -35,9 +35,9 @@ int main(int argc, char **argv) {
 	//glLoadIdentity(); // save state
 	//glDisable(GL_DEPTH_TEST); // disable 3D drawing
 
-  // open and close window
-  MyWindow *w = new MyWindow();
-  w->run();
+	// open and close window
+	MyWindow *w = new MyWindow();
+	w->run();
 	delete w;
 
 	Mix_CloseAudio();

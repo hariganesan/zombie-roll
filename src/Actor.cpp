@@ -3,7 +3,7 @@
 
 #include "Actor.hpp"
 
-// TODO: add objects/borders so that returns false
+//TODO: think about collisions!
 bool Character::moveLeft() {
 	if ((pos.x -= F_BOX_DIM) < 0)
 		pos.x = 0;

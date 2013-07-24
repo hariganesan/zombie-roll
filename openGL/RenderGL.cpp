@@ -6,7 +6,7 @@
 void MyWindow::renderGL() {
   glClear(GL_COLOR_BUFFER_BIT);
   glPushMatrix();
-  // TODO: change to 0,1 for depth
+  // change to 0,1 for depth
   glOrtho(0, WINDOW_WIDTH, WINDOW_HEIGHT, 0, -1, 1); // set matrix
   //SDL_Color TEXT_WHITE = {200, 200, 200};
   //SDL_Color TEXT_BLACK = {20, 20, 20};
