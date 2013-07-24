@@ -74,7 +74,7 @@ void MyWindow::renderSDL() {
 		Vec2d mcPos = g->mc->getPosition();
 		unsigned int sprite = g->mc->getSprite();
 		SDL_Rect clip;
-		clip.x = (sprite - sprite/g->mc->getSpriteColCount())*100; // fIX
+		clip.x = (sprite % g->mc->getSpriteColCount())*100; // fIX
 		clip.y = sprite/g->mc->getSpriteRowCount()*100;
 		clip.w = SPRITE_WIDTH;
 		clip.h = SPRITE_HEIGHT;

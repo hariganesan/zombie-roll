@@ -119,10 +119,10 @@ void MyWindow::run() {
 			}
 
 			// battle!
-			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
-				g->createBattle();
-				g->display = DT_FIELD_BATTLE;
-			}
+//			if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
+//				g->createBattle();
+//				g->display = DT_FIELD_BATTLE;
+//			}
 		} else if (g->display == DT_FIELD_BATTLE) {
 			if (g->timer > TT_FIELD_BATTLE) {
 				g->timer = 0;
