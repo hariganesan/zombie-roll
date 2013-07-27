@@ -1,3 +1,6 @@
+#ifndef WINDOW_H
+#define WINDOW_H
+
 // Hari Ganesan 5/13/13
 // zombie-roll: window library file
 
@@ -8,19 +11,52 @@
 #include "SDL_ttf/SDL_ttf.h"
 //#include "SDL/SDL_opengl.h"
 
+const SDL_Color SDL_BLACK = {0, 0, 0};
+
+class Button {
+	SDL_Surface *buttonSheet; // sprite sheet
+	SDL_Surface *screen; // screen from window
+	SDL_Surface *messageOnScreen;
+	SDL_Rect box; // attributes of the button
+
+	SDL_Rect clips[4]; // houses each clip
+	SDL_Rect *clip;	// part of the sprite sheet
+
+	enum {
+		CLIP_MOUSE_OVER,
+		CLIP_MOUSE_OUT,
+		CLIP_MOUSE_DOWN,
+		CLIP_MOUSE_UP
+	};
+
+public:
+	int timeUntilDisplay;
+
+	Button(SDL_Surface *bs, SDL_Surface *s, int x, int y, int w, int h);
+	~Button();
+	void handleEvent(SDL_Event e);
+	void show();
+	void click();
+	bool isClicked();
+};
+
 class MyWindow {
 private:
 	SDL_Surface *screen; // main window
+	SDL_Surface *messageOnScreen; // main message
 	SDL_Event event; // log events
 	Keys keys; // used with events
+
+	Button *buttons[MAX_BUTTON_COUNT]; // change to vector?
 
 	// game state
 	Game *g;
 	bool isRunning;
 	bool moved;
-	TTF_Font *font12;
+	TTF_Font *font24;
 	Mix_Music *music;
 	SDL_Surface *spriteSheets[MAX_SPRITE_SHEET_COUNT];
+	SDL_Surface *messages[MAX_MESSAGE_COUNT];
 
 	// init/destroy fns
 	void Init();
@@ -43,15 +79,14 @@ private:
 										SDL_Surface* destination, SDL_Rect* clip = NULL);
 	void toggleMusic();
 
-	// testing/reference
-	void pushDots();
-
 	// debugging
 	void printStatus();
 
 public:
 	// fns used by main routine
-	MyWindow() : screen(NULL), g(NULL), font12(NULL), music(NULL) { Init(); };
+	MyWindow() : screen(NULL), g(NULL), font24(NULL), music(NULL) { Init(); };
 	~MyWindow() { Destroy(); };
 	void run();
 };
+
+#endif

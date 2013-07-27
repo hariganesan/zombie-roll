@@ -16,7 +16,7 @@ zombie: *.o
 	$(CC) -o $@ $(COCOA) $(SDL) $^
 
 # build object files
-*.o: $(SRC)/*.cpp $(SRC)/main/*.cpp
+*.o: $(SRC)/*.cpp $(SRC)/main/*.cpp $(SRC)/ui/*.cpp
 	$(CC) $(CFLAGS) -c $^
 
 clean:

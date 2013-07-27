@@ -11,6 +11,23 @@ const unsigned int SDL_FRAME_RATE = 30;
 const unsigned int F_BOX_DIM = 5; // field box dimension
 const double FIELD_COLOR = 0.3;
 
+// SPRITE SHEETS
+const unsigned int MAX_SPRITE_SHEET_COUNT = 1;
+const unsigned int MAX_SPRITE_COUNT = 4; // (per sheet)
+const unsigned int MAX_SPRITE_ROW_COUNT = 2;
+const unsigned int MAX_SPRITE_COL_COUNT = 2;
+const unsigned int SPRITE_WIDTH = 100;
+const unsigned int SPRITE_HEIGHT = 100;
+
+// buttons
+const unsigned int MAX_BUTTON_COUNT = 2;
+const unsigned int BUTTON_WIDTH = 320; // update
+const unsigned int BUTTON_HEIGHT = 240; // update
+
+// messages
+const unsigned int MAX_MESSAGE_COUNT = 1;
+const unsigned int MESSAGE_DISPLAY_TIME = 5; // in seconds
+
 // audio properties
 const unsigned int AUDIO_RATE = 22050;
 const unsigned int AUDIO_CHANNELS = 2;
@@ -65,13 +82,7 @@ const unsigned int LSBAR_INDICATOR_HP = 0;
 const unsigned int LSBAR_INDICATOR_MP = 0;
 const unsigned int LSBAR_OVERDRIVE_BAR = 0;
 
-// SPRITE SHEETS
-const unsigned int MAX_SPRITE_SHEET_COUNT = 1;
-const unsigned int MAX_SPRITE_COUNT = 4; // (per sheet)
-const unsigned int MAX_SPRITE_ROW_COUNT = 2;
-const unsigned int MAX_SPRITE_COL_COUNT = 2;
-const unsigned int SPRITE_WIDTH = 100;
-const unsigned int SPRITE_HEIGHT = 100;
+
 
 // CHARACTERS
 const unsigned int MAX_PARTY_COUNT = 4;

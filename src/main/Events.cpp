@@ -48,11 +48,9 @@ void MyWindow::handleEvent(SDL_Event e) {
 
 	// MOUSE CLICKS
 
-	if (e.type == SDL_MOUSEBUTTONDOWN) {
-		if (event.button.button == 1) { // LEFT MOUSE CLICK
-			cout << "(" << event.button.x << "," << event.button.y << ")" << endl;
-		} else if (event.button.button == 3) { // RIGHT MOUSE CLICK
-			cout << "(" << event.button.x << "," << event.button.y << ")" << endl;
+	for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
+		if (buttons[i] && !buttons[i]->isClicked()) {
+			buttons[i]->handleEvent(e);
 		}
 	}
 }

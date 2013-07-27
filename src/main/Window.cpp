@@ -13,12 +13,18 @@ void MyWindow::Init() {
 
 	SDL_WM_SetCaption("Zombie Roll", NULL);
 
-	// preload assets (testing)
+	// preload assets
 	for (unsigned int i = 0; i < MAX_SPRITE_SHEET_COUNT; i++) {
 		spriteSheets[i] = NULL;
 	}
 
-	spriteSheets[0] = loadImage("assets/images/test/1.png");
+	for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
+		buttons[i] = NULL;
+	}
+
+	for (unsigned int i = 0; i < MAX_MESSAGE_COUNT; i++) {
+		messages[i] = NULL;
+	}
 
 	// initialize random number generator
 	srand(time(NULL));
@@ -26,11 +32,12 @@ void MyWindow::Init() {
 	// initialize game state
 	isRunning = true;
 	moved = false;
+	messageOnScreen = NULL;
 	initKeys();
 	//toggleMusic();
 
 	// open font
-	if (!(font12 = TTF_OpenFont("assets/fonts/chintzy.ttf", 12))) {
+	if (!(font24 = TTF_OpenFont("assets/fonts/chintzy.ttf", 24))) {
 		cerr << "unable to open font" << endl;
 		exit(EXIT_FAILURE);
 	}
@@ -40,7 +47,13 @@ void MyWindow::Init() {
 
 	// test image
 	spriteSheets[0] = loadImage("../../Desktop/dots.png");
-	//pushDots();
+	SDL_Surface *buttonSheet1 = loadImage("../../Desktop/button.png");
+	SDL_Surface *buttonSheet2 = loadImage("../../Desktop/button.png");
+	// TODO: resize buttons?
+	buttons[0] = new Button(buttonSheet1, screen, WINDOW_WIDTH/2, 10, 320, 240);
+	buttons[1] = new Button(buttonSheet2, screen, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 320, 240);
+
+	messages[0] = TTF_RenderText_Solid(font24, "Attack", SDL_BLACK);
 
 	// debugging
 }
@@ -50,9 +63,25 @@ void MyWindow::Destroy() {
 	g = NULL;
 	delete tmpG;
 
-	TTF_CloseFont(font12);
+	// free messages
+	for (unsigned int i = 0; i < MAX_MESSAGE_COUNT; i++) {
+		if (messages[i]) {
+			SDL_Surface *tmpS = messages[i];
+			messages[i] = NULL;
+			SDL_FreeSurface(tmpS);
+		}
+	}
 
-	// free assets
+	// free buttons and button sheets
+	for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
+		if (buttons[i]) {
+			Button *tmpB = buttons[i];
+			buttons[i] = NULL;
+			delete tmpB;
+		}
+	}
+
+	// free spritesheets
 	for (unsigned int i = 0; i < MAX_SPRITE_SHEET_COUNT; i++) {
 		if (spriteSheets[i]) {
 			SDL_Surface *tmpS = spriteSheets[i];
@@ -60,6 +89,8 @@ void MyWindow::Destroy() {
 			SDL_FreeSurface(tmpS);
 		}
 	}
+
+	TTF_CloseFont(font24);
 }
 
 void MyWindow::run() {

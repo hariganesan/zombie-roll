@@ -28,3 +28,30 @@ how to set order?
 critical hits?
 speed/speed -> evasion percentage
 
+SPRITES
+==========
+
+field character
+- standing (1), walking (2+)
+- each direction (x4)
+- exclamation (4?)
+- question (4?)
+
+battle
+- attack pose
+- attack animation
+- being attacked pose
+- defense pose
+- KO pose/animation
+- victory animation
+- statuses (??)
+
+
+Game Saves
+===========
+
+- name of player
+- levels, stats of party
+- items/inventory
+- place on map
+- how far in game - percentage?
