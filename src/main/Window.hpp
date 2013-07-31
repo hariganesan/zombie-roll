@@ -5,12 +5,14 @@
 // zombie-roll: window library file
 
 #include "../Game.hpp"
+#include <sstream>
 #include "SDL/SDL.h"
 #include "SDL/SDL_mixer.h"
 #include "SDL/SDL_image.h"
 #include "SDL_ttf/SDL_ttf.h"
 //#include "SDL/SDL_opengl.h"
 
+using std::stringstream;
 const SDL_Color SDL_BLACK = {0, 0, 0};
 
 class Button {

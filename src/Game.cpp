@@ -9,12 +9,18 @@ Game::Game(string d, int p) : timer(0), currentArea(NULL), b(NULL) {
 	// create MC
 	party.push_back(PartyMember(d, MC_ATT_INIT, MC_DEF_INIT, 
 															MC_MAG_INIT, MC_SPE_INIT));
+
+	// create PM1
+	party.push_back(PartyMember("Rai", PM1_ATT_INIT, PM1_DEF_INIT, 
+															PM1_MAG_INIT, PM1_SPE_INIT));
+
 	mc = &party[0];
+	// field use
 	mc->setPosition(200, 200);
 	mc->setSpriteRowCount(2);
 	mc->setSpriteColCount(2);
 
-	// set EXP and levels
+	// set EXP and levels for all party members
 	setLevels();
 }
 

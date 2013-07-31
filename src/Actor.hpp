@@ -17,13 +17,14 @@ struct Vec2d {
 
 class Actor {
 protected:
-	string id;
+	string id; // change to const char*?
 	Vec2d pos;
 
 public:
 	Actor(string d) : id(d) {};
-	void setPosition(int x, int y) {pos.x = x; pos.y = y;};
+	string getID() const { return id;};
 	Vec2d getPosition() const {return pos;};
+	void setPosition(int x, int y) {pos.x = x; pos.y = y;};
 };
 
 class RenderableActor : public Actor {

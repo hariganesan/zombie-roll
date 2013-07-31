@@ -38,11 +38,14 @@ void MyWindow::applySurface(int x, int y, SDL_Surface* source,
 }
 
 void MyWindow::renderSDL() {
+	// draw background
 	if (g->display == DT_FIELD_BATTLE && g->timer % FLASH_RATE*2 >= FLASH_RATE) {
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
 	} else {
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
 	}
+
+	// FIELD
 
 	if (g->display == D_FIELD) {
 
@@ -58,7 +61,28 @@ void MyWindow::renderSDL() {
 
 		// get spritesheet 0 and attach MC to screen
 		applySurface(mcPos.x, mcPos.y, spriteSheets[0], screen, &clip);
+
+	// BATTLE
+
 	} else if (g->display == D_BATTLE) {
+
+		// SBAR
+		// TODO: edit constants for screen positions
+
+		stringstream hpText;
+		int i = 0;
+		for (vector<PartyMember>::const_iterator iter = g->party.begin();
+				 iter != g->party.end(); iter++, i++) {
+			hpText.clear();
+			hpText.str("");
+			hpText << iter->getID() << " ";
+			hpText << iter->getRemainingHP() << "/" << iter->getTotalHP();
+			SDL_Surface *hpSurface = TTF_RenderText_Solid(font24,
+																										hpText.str().c_str(), 
+																										SDL_BLACK);
+			applySurface(WINDOW_WIDTH-200, WINDOW_HEIGHT-50+i*25, hpSurface, screen);
+		}
+
 		// BUTTONS
 
 		for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
