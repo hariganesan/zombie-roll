@@ -43,7 +43,7 @@ Button::~Button() {
 	}
 }
 
-void Button::handleEvent(SDL_Event e) {
+bool Button::handleEvent(SDL_Event e) {
 	int x = 0; int y = 0; // mouse offsets
 
 	if (e.type == SDL_MOUSEMOTION) {
@@ -70,10 +70,15 @@ void Button::handleEvent(SDL_Event e) {
 		y = e.button.y;
 
 		if((x > box.x) && (x < box.x+box.w) && (y > box.y) && (y < box.y+box.h)) {
-			clip = &clips[CLIP_MOUSE_UP]; // consider removing
-			click();
+			if (clip == &clips[CLIP_MOUSE_DOWN]) {
+				click();
+				clip = &clips[CLIP_MOUSE_UP]; // consider removing
+				return true;
+			}
 		}
 	}
+
+	return false;
 }
 
 void Button::show() {

@@ -50,7 +50,7 @@ void MyWindow::handleEvent(SDL_Event e) {
 
 	for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
 		if (buttons[i] && !buttons[i]->isClicked()) {
-			buttons[i]->handleEvent(e);
+			buttonsPressed[i] = buttons[i]->handleEvent(e);
 		}
 	}
 }

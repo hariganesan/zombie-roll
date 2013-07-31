@@ -33,12 +33,14 @@ const unsigned int AUDIO_RATE = 22050;
 const unsigned int AUDIO_CHANNELS = 2;
 const unsigned int AUDIO_BUFFERS = 4096;
 
-// transition time
+// transitions
 const unsigned int TT_FIELD_BATTLE = 75;
+const unsigned int FLASH_RATE = 10;
 
 // display options
 
-// battle queue
+// battle
+const double BATTLE_PERCENT_DEF = 0.005;
 const unsigned int MAX_BQUEUE_ITEMS = 8;
 const unsigned int MAX_CYCLE = 100;
 const double SPEED_CONSTANT = 1.0;

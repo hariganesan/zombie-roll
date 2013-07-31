@@ -27,22 +27,26 @@ void MyWindow::performLogic() {
 		}
 
 		// battle!
-		// if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
-			// g->createBattle();
-			// g->display = DT_FIELD_BATTLE;
-		// }
+		if (moved && rand() % 100 < g->currentArea->battlePercent*100) {
+			g->createBattle();
+			g->display = DT_FIELD_BATTLE;
+			g->timer = TT_FIELD_BATTLE;
+		}
 
 	// FIELD-BATTLE TRANSITION
 
 	} else if (g->display == DT_FIELD_BATTLE) {
-		if (g->timer > TT_FIELD_BATTLE) {
-			g->timer = 0;
+		if (g->timer <= 0) {
 			g->display = D_BATTLE;
 		}
+
+		g->timer--;
 
 	// BATTLE
 
 	} else if (g->display == D_BATTLE) {
-		;
+		if (buttonsPressed[0]) {
+			;
+		}
 	}
 }

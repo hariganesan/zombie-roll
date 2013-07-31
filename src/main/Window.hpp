@@ -34,7 +34,7 @@ public:
 
 	Button(SDL_Surface *bs, SDL_Surface *s, int x, int y, int w, int h);
 	~Button();
-	void handleEvent(SDL_Event e);
+	bool handleEvent(SDL_Event e); // returns true when button was pressed
 	void show();
 	void click();
 	bool isClicked();
@@ -48,6 +48,7 @@ private:
 	Keys keys; // used with events
 
 	Button *buttons[MAX_BUTTON_COUNT]; // change to vector?
+	bool buttonsPressed[MAX_BUTTON_COUNT];
 
 	// game state
 	Game *g;

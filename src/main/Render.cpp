@@ -38,8 +38,13 @@ void MyWindow::applySurface(int x, int y, SDL_Surface* source,
 }
 
 void MyWindow::renderSDL() {
-	if (g->display == D_FIELD) {
+	if (g->display == DT_FIELD_BATTLE && g->timer % FLASH_RATE*2 >= FLASH_RATE) {
+		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, 0x00, 0x00, 0x00));
+	} else {
 		SDL_FillRect(screen, &screen->clip_rect, SDL_MapRGB(screen->format, 0xFF, 0xFF, 0xFF));
+	}
+
+	if (g->display == D_FIELD) {
 
 		// DRAW MC
 
@@ -53,7 +58,7 @@ void MyWindow::renderSDL() {
 
 		// get spritesheet 0 and attach MC to screen
 		applySurface(mcPos.x, mcPos.y, spriteSheets[0], screen, &clip);
-
+	} else if (g->display == D_BATTLE) {
 		// BUTTONS
 
 		for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {

@@ -20,6 +20,7 @@ void MyWindow::Init() {
 
 	for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
 		buttons[i] = NULL;
+		buttonsPressed[i] = false;
 	}
 
 	for (unsigned int i = 0; i < MAX_MESSAGE_COUNT; i++) {
@@ -43,7 +44,7 @@ void MyWindow::Init() {
 	}
 
 	g = new Game("Hari", D_FIELD);
-	g->currentArea = new Area(.1);
+	g->currentArea = new Area(BATTLE_PERCENT_DEF);
 
 	// test image
 	spriteSheets[0] = loadImage("../../Desktop/dots.png");
