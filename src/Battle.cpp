@@ -3,7 +3,7 @@
 
 #include "Battle.hpp"
 
-Battle::Battle(int ec) {
+Battle::Battle(int ec) : activeFC(NULL) {
 	for (int i = 0; i < ec; i++) {
 		enemies.push_back(Enemy("Zombie"));
 	}
@@ -12,6 +12,22 @@ Battle::Battle(int ec) {
 	while (bQueue.size() < MAX_BQUEUE_ITEMS) {
 		bQueuePush();
 	}
+
+	// pop first member and push into activeFC
+	if (!(activeFC = bQueuePop())) { // TODO: not getting right fc, fix
+		cerr << "Battle.cpp/18: no items in battle queue" << endl;
+		exit(1);
+	}
+
+	if (activeFC->isPartyMember) {
+		// createBattleMenu();
+		battleMenu.push_back(BMENU_ATTACK);
+		battleMenu.push_back(BMENU_DEFEND);
+	} else {
+		// make sure menu is empty?
+	}
+
+	bQueuePush();
 }
 
 Battle::~Battle() {
@@ -80,6 +96,16 @@ void Battle::bQueuePush() {
 	}
 }
 
+FightingCharacter* Battle::bQueuePop() {
+	if (!bQueue.empty()) {
+		FightingCharacter *fc = &bQueue.front();
+		bQueue.pop_front();
+		return fc;
+	}
+
+	return NULL;	
+}
+
 bool Battle::checkHit(const FightingCharacter& c1, 
 											const FightingCharacter& c2) {
 	// use arctan fn
@@ -127,4 +153,14 @@ bool Battle::attack(FightingCharacter& c1, FightingCharacter& c2, int mp) {
 	// attack successful!
 	cout << "attack hit" << endl;
 	return true;
+}
+
+string Battle::getMenuItemName(const int& item) const {
+	switch (item) {
+		case BMENU_ATTACK: return "Attack";
+		case BMENU_DEFEND: return "Defend";
+		case BMENU_SKILL: return "Skill";
+		case BMENU_ITEM: return "Item";
+		default: return "???";
+	}
 }

@@ -57,6 +57,7 @@ void MyWindow::Init() {
 	messages[0] = TTF_RenderText_Solid(font24, "Attack", SDL_BLACK);
 
 	// debugging
+	cout << "window loaded" << endl;
 }
 
 void MyWindow::Destroy() {
@@ -138,6 +139,8 @@ void MyWindow::printStatus() {
 	if (g->b) {
 		cout << "state: battle" << endl;
 		cout << g->b->enemies.size() << " enemies" << endl;
+		cout << "activeFC: " << g->b->activeFC->getID() << endl;
+		cout << "bmenu items: " << g->b->battleMenu.size() << endl;
 		
 		for (vector<Enemy>::const_iterator iter = g->b->enemies.begin(); 
 				 iter != g->b->enemies.end(); iter++) {

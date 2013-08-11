@@ -45,8 +45,11 @@ void MyWindow::performLogic() {
 	// BATTLE
 
 	} else if (g->display == D_BATTLE) {
-		if (buttonsPressed[0]) {
-			;
-		}
+		// TODO: check to see if action is possible?
+
+		// if some action is selected
+		;
 	}
+
+
 }

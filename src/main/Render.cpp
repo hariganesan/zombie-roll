@@ -84,13 +84,13 @@ void MyWindow::renderSDL() {
 		}
 
 		// BUTTONS
-
+		/*
 		for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
 			if (buttons[i] && !buttons[i]->isClicked()) {
 				buttons[i]->show();
 			}
 		}
-
+		*/
 		// MESSAGES
 
 		for (unsigned int i = 0; i < MAX_BUTTON_COUNT; i++) {
@@ -102,6 +102,18 @@ void MyWindow::renderSDL() {
 				buttons[i]->timeUntilDisplay--;
 			}
 		}		
+	}
+
+	// MENUS
+
+	if (g->b && !g->b->battleMenu.empty()) {
+		int i = 0;
+		for (vector<int>::const_iterator iter = g->b->battleMenu.begin(); 
+				 iter != g->b->battleMenu.end(); iter++, i++) {
+			SDL_Surface *miSurface = TTF_RenderText_Solid(
+				font24, g->b->getMenuItemName(*iter).c_str(), SDL_BLACK);
+			applySurface(20, WINDOW_HEIGHT-50+i*25, miSurface, screen);
+		}
 	}
 
 	// update the screen

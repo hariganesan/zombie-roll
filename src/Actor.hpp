@@ -128,10 +128,16 @@ class FightingCharacter : public Character {
 
 	Weapon *equippedWeapon;
 	Armor *equippedArmor[2];
+
+	bool selectedOnScreen;
+
 public:
+	bool isPartyMember;
+
 	FightingCharacter(string d, int a, int f, int m, int s, 
 										int l = 1, int h = 25, int n = 10) : Character(d), xp(0)
-										, remainingHP(h), remainingMP(n), status(0), ct(0) {
+										, remainingHP(h), remainingMP(n), status(0), ct(0)
+										, selectedOnScreen(false) {
 		level = l;
 		attack = a;
 		defense = f;
@@ -170,7 +176,7 @@ class PartyMember : public FightingCharacter {
 public:
 	PartyMember(string d, int a, int f, int m, int s, 
 							int l = 1, int h = 25, int n = 10)
-							: FightingCharacter(d, a, f, m, s, l, h, n) {};
+							: FightingCharacter(d, a, f, m, s, l, h, n) {isPartyMember = true;};
 };
 
 class Enemy : public FightingCharacter {
@@ -179,5 +185,5 @@ class Enemy : public FightingCharacter {
 public:
 	Enemy(string d, int a = 4, int f = 4, int m = 4, int s = 2, 
 				int l = 1, int h = 10, int n = 10)
-				: FightingCharacter(d, a, f, m, s, l, h, n) {};
+				: FightingCharacter(d, a, f, m, s, l, h, n) {isPartyMember = false;};
 };

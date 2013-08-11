@@ -1,5 +1,8 @@
 TODO
 =========
+- change mouse events to keys?
+- battle select
+- how to link game and ui?
 - preloaded/dynamic text
 - change music
 - draw sprites - Andrew?
